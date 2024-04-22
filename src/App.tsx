@@ -1,14 +1,15 @@
-import Header from './components/UI/Header';
-import Main from './components/Main';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Application from './pages/Application';
+import Home from './components/Home';
 
 function App() {
   return (
-    <div className="h-screen w-screen bg-red-100">
-      <div className="flex h-full flex-col">
-        <Header />
-        <Main />
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="" element={<Home />} />
+        <Route path="app" element={<Application />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
