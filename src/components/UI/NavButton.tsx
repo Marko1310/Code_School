@@ -7,7 +7,6 @@ type NavLinkProps = {
 
 function NavButton({ route, title }: NavLinkProps) {
   const location = useLocation().pathname;
-  console.log(location);
 
   return (
     <Link
@@ -20,4 +19,5 @@ function NavButton({ route, title }: NavLinkProps) {
     </Link>
   );
 }
+
 export default NavButton;
