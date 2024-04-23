@@ -23,7 +23,7 @@ function AdminProvider({ children }: { children: ReactNode }) {
 
 function useAdmin() {
   const context = useContext(AdminContext);
-  if (context === undefined)
+  if (!context)
     throw new Error('AdminContext was used outside of AdminProvider');
   return context;
 }

@@ -3,7 +3,7 @@ import DarkModeToggle from './AdminToggle';
 import NavButton from './NavButton';
 
 function Header() {
-  const { isAdmin } = useAdmin()!;
+  const { isAdmin } = useAdmin();
 
   return (
     <div className="flex h-20 w-full items-center bg-white md:gap-4 md:px-4">

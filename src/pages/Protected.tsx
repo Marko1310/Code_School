@@ -1,15 +1,18 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { useAdmin } from '../context/AdminContext';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Protected({ children }: { children: ReactNode }) {
-  const { isAdmin } = useAdmin()!;
+  const { isAdmin } = useAdmin();
+  const navigate = useNavigate();
 
-  if (!isAdmin) {
-    return <Navigate to={'/app/workshops'} />;
-  } else {
-    return <>{children}</>;
-  }
+  useEffect(() => {
+    if (!isAdmin) {
+      navigate('/app/workshops', { replace: true });
+    }
+  }, [navigate, isAdmin]);
+
+  return children;
 }
 
 export default Protected;
