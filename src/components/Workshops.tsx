@@ -2,7 +2,7 @@ import Aside from './UI/Aside';
 import Content from './Content';
 import { useState } from 'react';
 
-function Main() {
+function Workshops() {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
 
   const toggleExpand = function () {
@@ -20,4 +20,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Workshops;

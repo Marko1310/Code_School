@@ -1,5 +1,6 @@
 import waveDark from '/wave-dark.svg';
 import blob from '/blob.svg';
+import animation from '/animation.png';
 import { Link } from 'react-router-dom';
 
 function Home() {
@@ -46,12 +47,8 @@ function Home() {
             </div>
           </div>
 
-          <div className="hidden h-full p-16 lg:block">
-            <img
-              className="max-h-[600px]"
-              src="/animation.png"
-              alt="animation"
-            />
+          <div className="hidden h-full p-16 lg:flex lg:items-center">
+            <img className="max-h-full" src={animation} alt="animation" />
           </div>
         </div>
       </div>
