@@ -17,7 +17,6 @@ function App() {
             <Route index element={<Navigate to="workshops" />} />
             <Route path="workshops" element={<Workshops />} />
             <Route path="lecturers" element={<Lecturers />} />
-
             <Route
               path="admin"
               element={
