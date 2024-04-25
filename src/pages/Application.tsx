@@ -6,7 +6,7 @@ function Application() {
     <div className="h-screen w-screen bg-red-100">
       <div className="flex h-full flex-col">
         <Header />
-        <div className="overflow-y-auto">
+        <div className="h-full overflow-y-auto">
           <Outlet />
         </div>
       </div>

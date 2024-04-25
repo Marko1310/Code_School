@@ -2,7 +2,7 @@ import { Tables } from '../../types/database.types';
 import LecturerProfile from './LecturerProfile';
 
 type LecturerProps = {
-  lecturer: Tables<'lecturers'>;
+  lecturer: Tables<'lecturer_with_organization_view'>;
 };
 
 function LecturerCard({ lecturer }: LecturerProps) {
@@ -11,7 +11,7 @@ function LecturerCard({ lecturer }: LecturerProps) {
       <div className="flex flex-col items-center">
         <LecturerProfile />
         <p>{lecturer.name}</p>
-        <p>{lecturer.organization_id}</p>
+        <p>{lecturer.organization_name}</p>
       </div>
     </div>
   );
