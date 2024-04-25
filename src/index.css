@@ -7,6 +7,10 @@
     font-family: 'Poppins', system-ui, sans-serif;
   }
 
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
   :root {
     --background: #ffffff;
     --foreground: #ffffff;

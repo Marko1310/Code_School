@@ -1,5 +1,5 @@
 import Aside from './UI/Aside';
-import Content from './Content';
+import MainContent from './MainContent';
 import { useState } from 'react';
 
 function Workshops() {
@@ -15,7 +15,7 @@ function Workshops() {
         isSidebarExpanded={isSidebarExpanded}
         toggleExpand={toggleExpand}
       />
-      <Content isSidebarExpanded={isSidebarExpanded} />
+      {/* <Content isSidebarExpanded={isSidebarExpanded} /> */}
     </div>
   );
 }

@@ -12,4 +12,8 @@ const getAllOrganizations = async () => {
     return await supabaseClient.from('organizations').select()
 }
 
-export default { getAllThemes, getAllDifficulties , getAllOrganizations};
+const getAllLecturers = async () => {
+    return await supabaseClient.from('lecturers').select().throwOnError()
+}
+
+export default { getAllThemes, getAllDifficulties , getAllOrganizations, getAllLecturers};
