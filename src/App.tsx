@@ -6,28 +6,33 @@ import Lecturers from './components/Lecturers';
 import Admin from './components/Admin';
 import { AdminProvider } from './context/AdminContext';
 import Protected from './pages/Protected';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <AdminProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="" element={<Home />} />
-          <Route path="app" element={<Application />}>
-            <Route index element={<Navigate to="workshops" />} />
-            <Route path="workshops" element={<Workshops />} />
-            <Route path="lecturers" element={<Lecturers />} />
-            <Route
-              path="admin"
-              element={
-                <Protected>
-                  <Admin />
-                </Protected>
-              }
-            />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="" element={<Home />} />
+            <Route path="app" element={<Application />}>
+              <Route index element={<Navigate to="workshops" />} />
+              <Route path="workshops" element={<Workshops />} />
+              <Route path="lecturers" element={<Lecturers />} />
+              <Route
+                path="admin"
+                element={
+                  <Protected>
+                    <Admin />
+                  </Protected>
+                }
+              />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
     </AdminProvider>
   );
 }
