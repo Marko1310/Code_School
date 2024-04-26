@@ -84,7 +84,7 @@ export type Database = {
             foreignKeyName: "public_lecturer_themes_lecturers_id_fkey"
             columns: ["lecturers_id"]
             isOneToOne: false
-            referencedRelation: "lecturer_with_organization_view"
+            referencedRelation: "lecturer_with_organization_and_themes_view"
             referencedColumns: ["id"]
           },
           {
@@ -139,7 +139,7 @@ export type Database = {
             foreignKeyName: "public_workshop_lecturers_lecturer_id_fkey"
             columns: ["lecturer_id"]
             isOneToOne: false
-            referencedRelation: "lecturer_with_organization_view"
+            referencedRelation: "lecturer_with_organization_and_themes_view"
             referencedColumns: ["id"]
           },
           {
@@ -219,11 +219,12 @@ export type Database = {
       }
     }
     Views: {
-      lecturer_with_organization_view: {
+      lecturer_with_organization_and_themes_view: {
         Row: {
           id: number | null
           name: string | null
-          organization_name: string | null
+          organizations: string | null
+          themes: string[] | null
         }
         Relationships: []
       }

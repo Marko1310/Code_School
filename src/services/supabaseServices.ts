@@ -13,7 +13,7 @@ const getAllOrganizations = async () => {
 }
 
 const getAllLecturers = async () => {
-    return await supabaseClient.from('lecturer_with_organization_view').select()
+    return await supabaseClient.from('lecturer_with_organization_and_themes_view').select()
 }
 
 export default { getAllThemes, getAllDifficulties , getAllOrganizations, getAllLecturers};
