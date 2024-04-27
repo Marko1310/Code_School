@@ -1,4 +1,7 @@
+import { useAdmin } from '../../context/AdminContext';
 import { Tables } from '../../types/database.types';
+import CardInfo from '../CardInfo';
+import AddNewButton from '../UI/AddNewButton';
 import LecturerProfile from './LecturerProfile';
 
 type LecturerProps = {
@@ -6,30 +9,34 @@ type LecturerProps = {
 };
 
 function LecturerCard({ lecturer }: LecturerProps) {
+  const { isAdmin } = useAdmin();
+
   return (
     <div className="rounded-lg border bg-white p-3">
       <div className="mb-4">
-        <LecturerProfile name={lecturer.name} />
+        <LecturerProfile name={lecturer.name} image={lecturer.profile_url} />
       </div>
-      <div className="flex flex-col gap-2">
-        <p>Bio: </p>
-        <div className="flex gap-1">
-          <p className="font-semibold">Organization:</p>
-          <div className="flex flex-wrap">
-            <p>{lecturer.organizations}</p>
-          </div>
-        </div>
-        <div className="flex gap-1">
-          <p className="font-semibold">Themes: </p>
-          <div className="flex flex-wrap gap-1">
-            {lecturer?.themes?.map((theme) => {
-              return (
-                <>
-                  <p>{theme}</p>
-                  <p>{''}</p>
-                </>
-              );
-            })}
+      <div className="flex flex-col gap-4">
+        <CardInfo title="Bio">{lecturer.bio}</CardInfo>
+        <CardInfo title="Organization">
+          <p>{lecturer.organizations}</p>
+        </CardInfo>
+        <CardInfo title="Themes">
+          {lecturer?.themes?.map((theme, i) => {
+            return (
+              <div key={i} className="flex gap-1">
+                <p>{theme}</p>
+                <p>{''}</p>
+              </div>
+            );
+          })}
+        </CardInfo>
+        <div className="mt-6 flex flex-col justify-start gap-2">
+          <button className="rounded-lg border border-black px-6 py-3 transition-all hover:bg-green-200">
+            View Workshops
+          </button>
+          <div className="mt-6 flex w-full justify-end">
+            {isAdmin && <AddNewButton value="Edit lecturer" />}
           </div>
         </div>
       </div>

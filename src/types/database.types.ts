@@ -29,22 +29,28 @@ export type Database = {
       }
       lecturers: {
         Row: {
+          bio: string | null
           created_at: string
           id: number
           name: string
           organization_id: number | null
+          profile_url: string | null
         }
         Insert: {
+          bio?: string | null
           created_at?: string
           id?: number
           name: string
           organization_id?: number | null
+          profile_url?: string | null
         }
         Update: {
+          bio?: string | null
           created_at?: string
           id?: number
           name?: string
           organization_id?: number | null
+          profile_url?: string | null
         }
         Relationships: []
       }
@@ -221,9 +227,11 @@ export type Database = {
     Views: {
       lecturer_with_organization_and_themes_view: {
         Row: {
+          bio: string | null
           id: number | null
           name: string | null
           organizations: string | null
+          profile_url: string | null
           themes: string[] | null
         }
         Relationships: []

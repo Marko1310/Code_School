@@ -10,7 +10,7 @@ function LecturersList() {
       <div className="flex flex-wrap">
         {allLecturers?.map((lecturer) => {
           return (
-            <div key={lecturer.id} className="mb-4 w-full px-4 md:w-1/2">
+            <div key={lecturer.id} className="mb-4 w-full px-4 lg:w-1/2">
               <LecturerCard lecturer={lecturer} />
             </div>
           );
