@@ -1,9 +1,10 @@
-import { useGetAllLecturers } from '../../queries/lecturersQueries';
+import { useGeFilteredlLecturers } from '../../queries/lecturersQueries';
 import Loading from '../UI/Loading';
 import LecturerCard from './LecturerCard';
 
 function LecturersList() {
-  const { allLecturers, isLoading } = useGetAllLecturers();
+  const { allLecturers, isLoading } = useGeFilteredlLecturers();
+
   return (
     <>
       {isLoading && <Loading />}

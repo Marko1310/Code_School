@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Application from './pages/Application';
 import Home from './components/Home';
-import Workshops from './components/Workshops';
+import Workshops from './components/Workshops/Workshops';
 import Lecturers from './components/Lecturers/Lecturers';
 import Admin from './components/Admin';
 import { AdminProvider } from './context/AdminContext';

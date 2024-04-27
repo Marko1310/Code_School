@@ -1,11 +1,11 @@
 import { useAdmin } from '../../context/AdminContext';
-import { Tables } from '../../types/database.types';
+import { allLecturersType } from '../../types/data.types';
 import CardInfo from '../CardInfo';
 import AddNewButton from '../UI/AddNewButton';
 import LecturerProfile from './LecturerProfile';
 
 type LecturerProps = {
-  lecturer: Tables<'lecturer_with_organization_and_themes_view'>;
+  lecturer: allLecturersType;
 };
 
 function LecturerCard({ lecturer }: LecturerProps) {
@@ -19,13 +19,13 @@ function LecturerCard({ lecturer }: LecturerProps) {
       <div className="flex flex-col gap-4">
         <CardInfo title="Bio">{lecturer.bio}</CardInfo>
         <CardInfo title="Organization">
-          <p>{lecturer.organizations}</p>
+          <p>{lecturer.organizations?.name}</p>
         </CardInfo>
         <CardInfo title="Themes">
           {lecturer?.themes?.map((theme, i) => {
             return (
               <div key={i} className="flex gap-1">
-                <p>{theme}</p>
+                <p>{theme.name}</p>
                 <p>{''}</p>
               </div>
             );

@@ -27,6 +27,36 @@ export type Database = {
         }
         Relationships: []
       }
+      lecturer_themes: {
+        Row: {
+          lecturers_id: number
+          themes_id: number
+        }
+        Insert: {
+          lecturers_id: number
+          themes_id: number
+        }
+        Update: {
+          lecturers_id?: number
+          themes_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lecturer_themes_lecturers_id_fkey"
+            columns: ["lecturers_id"]
+            isOneToOne: false
+            referencedRelation: "lecturers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "lecturer_themes_themes_id_fkey"
+            columns: ["themes_id"]
+            isOneToOne: false
+            referencedRelation: "themes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       lecturers: {
         Row: {
           bio: string | null
@@ -52,7 +82,15 @@ export type Database = {
           organization_id?: number | null
           profile_url?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "lecturers_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       organizations: {
         Row: {
@@ -71,43 +109,6 @@ export type Database = {
           name?: string
         }
         Relationships: []
-      }
-      theme_lecturers: {
-        Row: {
-          lecturers_id: number | null
-          themes_id: number | null
-        }
-        Insert: {
-          lecturers_id?: number | null
-          themes_id?: number | null
-        }
-        Update: {
-          lecturers_id?: number | null
-          themes_id?: number | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "public_lecturer_themes_lecturers_id_fkey"
-            columns: ["lecturers_id"]
-            isOneToOne: false
-            referencedRelation: "lecturer_with_organization_and_themes_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "public_lecturer_themes_lecturers_id_fkey"
-            columns: ["lecturers_id"]
-            isOneToOne: false
-            referencedRelation: "lecturers"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "public_lecturer_themes_themes_id_fkey"
-            columns: ["themes_id"]
-            isOneToOne: false
-            referencedRelation: "themes"
-            referencedColumns: ["id"]
-          },
-        ]
       }
       themes: {
         Row: {
@@ -141,13 +142,6 @@ export type Database = {
           workshop_id?: number
         }
         Relationships: [
-          {
-            foreignKeyName: "public_workshop_lecturers_lecturer_id_fkey"
-            columns: ["lecturer_id"]
-            isOneToOne: false
-            referencedRelation: "lecturer_with_organization_and_themes_view"
-            referencedColumns: ["id"]
-          },
           {
             foreignKeyName: "public_workshop_lecturers_lecturer_id_fkey"
             columns: ["lecturer_id"]
@@ -225,17 +219,7 @@ export type Database = {
       }
     }
     Views: {
-      lecturer_with_organization_and_themes_view: {
-        Row: {
-          bio: string | null
-          id: number | null
-          name: string | null
-          organizations: string | null
-          profile_url: string | null
-          themes: string[] | null
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Functions: {
       [_ in never]: never
