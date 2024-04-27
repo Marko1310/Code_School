@@ -1,4 +1,4 @@
-export type allLecturersType = {
+export type LecturerType = {
     id: number;
     name: string;
     bio:string | null;
@@ -11,4 +11,21 @@ export type allLecturersType = {
         id: number;
         name: string;
     }[];
+}
+
+export type WorkshopType = {
+    id: number;
+    title: string;
+    themes: {
+        id: number;
+        name: string;
+    }[];
+    lecturers: {
+        id: number;
+        name: string;
+    }[];
+    difficulties: {
+        id: number;
+        level: string;
+    } | null;
 }

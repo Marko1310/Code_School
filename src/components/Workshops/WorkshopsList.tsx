@@ -1,6 +1,7 @@
 // import { useGetAllLecturers } from '../../queries/lecturersQueries';
 import { useGetFilteredWorkshops } from '../../queries/workshopsQueries';
 import Loading from '../UI/Loading';
+import WorkshopCard from './WorkshopCard';
 // import LecturerCard from './LecturerCard';
 
 function WorkshopList() {
@@ -10,13 +11,13 @@ function WorkshopList() {
     <>
       {isLoading && <Loading />}
       <div className="flex flex-wrap">
-        {/* {allLecturers?.map((lecturer) => {
+        {allWorkshops?.map((workshop) => {
           return (
-            <div key={lecturer.id} className="mb-4 w-full px-4 lg:w-1/2">
-              <LecturerCard lecturer={lecturer} />
+            <div key={workshop.id} className="mb-4 w-full px-4">
+              <WorkshopCard workshop={workshop} />
             </div>
           );
-        })} */}
+        })}
       </div>
     </>
   );
