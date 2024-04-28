@@ -1,11 +1,10 @@
-import Aside from '../UI/Aside';
-import MainContent from '../MainContent';
-import { useState } from 'react';
-import LecturersList from './LecturersList';
-import AdminButton from '../UI/AdminButton';
-import { useAdmin } from '../../context/AdminContext';
+import { ReactNode, useState } from 'react';
+import { useAdmin } from '../context/AdminContext';
+import Aside from '../components/UI/Aside';
+import MainContent from '../components/MainContent';
+import AdminButton from '../components/UI/AdminButton';
 
-function Lecturers() {
+function UserLayout({ children }: { children: ReactNode }) {
   const { isAdmin } = useAdmin();
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
 
@@ -24,11 +23,11 @@ function Lecturers() {
           <div className="flex h-20 w-full justify-end">
             {isAdmin && <AdminButton value="Add new lecturer" />}
           </div>
-          <LecturersList />
+          {children}
         </div>
       </MainContent>
     </div>
   );
 }
 
-export default Lecturers;
+export default UserLayout;

@@ -1,12 +1,13 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import Application from './pages/Application';
-import Home from './components/Home';
-import Workshops from './components/Workshops/Workshops';
-import Lecturers from './components/Lecturers/Lecturers';
-import Admin from './components/Admin';
+import ApplicationLayout from './layouts/ApplicationLayout';
+import Home from './pages/Home';
+import Workshops from './pages/Workshops';
+import Lecturers from './pages/Lecturers';
+import Admin from './pages/Admin';
 import { AdminProvider } from './context/AdminContext';
 import Protected from './pages/Protected';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import NotFound from './pages/NotFound';
 
 const queryClient = new QueryClient();
 
@@ -17,9 +18,11 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="" element={<Home />} />
-            <Route path="app" element={<Application />}>
+            <Route path="app" element={<ApplicationLayout />}>
               <Route index element={<Navigate to="workshops" />} />
-              <Route path="workshops" element={<Workshops />} />
+              <Route path="workshops" element={<Workshops />}>
+                <Route path=":lecturerId" />
+              </Route>
               <Route path="lecturers" element={<Lecturers />} />
               <Route
                 path="admin"
@@ -30,6 +33,7 @@ function App() {
                 }
               />
             </Route>
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
