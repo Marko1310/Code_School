@@ -1,6 +1,6 @@
 import { useAdmin } from '../../context/AdminContext';
 import MainContent from '../MainContent';
-import AddNewButton from '../UI/AddNewButton';
+import AdminButton from '../UI/AdminButton';
 import Aside from '../UI/Aside';
 import { useState } from 'react';
 import WorkshopsList from './WorkshopsList';
@@ -22,7 +22,7 @@ function Workshops() {
       <MainContent isSidebarExpanded={isSidebarExpanded}>
         <div className="flex flex-col">
           <div className="flex h-20 w-full justify-end">
-            {isAdmin && <AddNewButton value="Add new lecturer" />}
+            {isAdmin && <AdminButton value="Add new workshop" />}
           </div>
           <WorkshopsList />
         </div>

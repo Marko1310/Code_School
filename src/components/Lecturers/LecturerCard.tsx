@@ -1,7 +1,7 @@
 import { useAdmin } from '../../context/AdminContext';
 import { LecturerType } from '../../types/data.types';
 import CardInfo from '../CardInfo';
-import AddNewButton from '../UI/AddNewButton';
+import AdminButton from '../UI/AdminButton';
 import LecturerProfile from './LecturerProfile';
 
 type LecturerProps = {
@@ -12,7 +12,7 @@ function LecturerCard({ lecturer }: LecturerProps) {
   const { isAdmin } = useAdmin();
 
   return (
-    <div className="mb-8 flex h-full flex-col justify-between rounded-lg border bg-white p-3">
+    <div className="mb-8 flex h-full flex-col justify-between rounded-lg border bg-white p-6">
       <div className="mb-4">
         <LecturerProfile name={lecturer.name} image={lecturer.profile_url} />
       </div>
@@ -40,7 +40,7 @@ function LecturerCard({ lecturer }: LecturerProps) {
           View Workshops
         </button>
         <div className="mt-6 flex w-full justify-end">
-          {isAdmin && <AddNewButton value="Edit lecturer" />}
+          {isAdmin && <AdminButton value="Edit lecturer" />}
         </div>
       </div>
     </div>

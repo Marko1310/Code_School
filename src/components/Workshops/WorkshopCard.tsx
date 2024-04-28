@@ -1,7 +1,7 @@
 import { useAdmin } from '../../context/AdminContext';
 import { WorkshopType } from '../../types/data.types';
 import CardInfo from '../CardInfo';
-import AddNewButton from '../UI/AddNewButton';
+import AdminButton from '../UI/AdminButton';
 
 type WorkshopProps = {
   workshop: WorkshopType;
@@ -11,7 +11,7 @@ function WorkshopCard({ workshop }: WorkshopProps) {
   const { isAdmin } = useAdmin();
 
   return (
-    <div className="mb-8 flex flex-col rounded-lg border bg-white p-3">
+    <div className="mb-8 flex flex-col rounded-lg border bg-white p-6">
       <div className="flex flex-col lg:flex-row lg:gap-8">
         <p className="font-base mb-8 h-fit w-fit border-b-2 text-3xl">
           {workshop.title}
@@ -49,11 +49,11 @@ function WorkshopCard({ workshop }: WorkshopProps) {
               );
             })}
           </CardInfo>
-          <div className="mt-6 flex justify-start gap-2">
+          <div className="mt-4 flex justify-end gap-2">
+            {isAdmin && <AdminButton value="Edit workshop" />}
             <button className="rounded-lg border border-black px-6 py-3 transition-all hover:bg-green-200">
               Apply
             </button>
-            {isAdmin && <AddNewButton value="Edit workshop" />}
           </div>
         </div>
       </div>
