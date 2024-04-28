@@ -25,7 +25,10 @@ function LecturerCard({ lecturer }: LecturerProps) {
           {lecturer?.themes?.map((theme, i) => {
             return (
               <div key={i} className="flex gap-1">
-                <p>{theme.name}</p>
+                <p>
+                  {theme.name}
+                  {i === lecturer.themes.length - 1 ? '' : ','}
+                </p>
                 <p>{''}</p>
               </div>
             );

@@ -19,7 +19,10 @@ function WorkshopCard({ workshop }: WorkshopProps) {
           {workshop?.themes?.map((theme, i) => {
             return (
               <div key={i} className="flex gap-1">
-                <p>{theme.name}</p>
+                <p>
+                  {theme.name}
+                  {i === workshop.themes.length - 1 ? '' : ','}
+                </p>
                 <p>{''}</p>
               </div>
             );
@@ -29,7 +32,10 @@ function WorkshopCard({ workshop }: WorkshopProps) {
           {workshop?.lecturers?.map((lecturer, i) => {
             return (
               <div key={i} className="flex gap-1">
-                <p>{lecturer.name}</p>
+                <p>
+                  {lecturer.name}
+                  {i === workshop.lecturers.length - 1 ? '' : ','}
+                </p>
                 <p>{''}</p>
               </div>
             );

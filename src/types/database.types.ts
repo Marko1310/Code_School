@@ -191,18 +191,21 @@ export type Database = {
       workshops: {
         Row: {
           created_at: string
+          description: string | null
           difficulty_id: number | null
           id: number
           title: string
         }
         Insert: {
           created_at?: string
+          description?: string | null
           difficulty_id?: number | null
           id?: number
           title: string
         }
         Update: {
           created_at?: string
+          description?: string | null
           difficulty_id?: number | null
           id?: number
           title?: string
