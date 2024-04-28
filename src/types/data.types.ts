@@ -16,6 +16,7 @@ export type LecturerType = {
 export type WorkshopType = {
     id: number;
     title: string;
+    description: string | null;
     themes: {
         id: number;
         name: string;

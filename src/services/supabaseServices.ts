@@ -27,7 +27,7 @@ const getFilteredLecturers = async (organizationId?:number, themeIds?:number[]) 
 }
 
 const getFilteredWorkshops = async (difficultyId?:number, themeIds?:number[]) => {
-    let query = supabaseClient.from('workshops').select(`id, title, themes (id, name), lecturers (id, name), difficulties(id, level)`)
+    let query = supabaseClient.from('workshops').select(`id, title, description, themes (id, name), lecturers (id, name), difficulties(id, level)`)
 
     if (difficultyId) {
         query = query.eq('difficulty_id', difficultyId)
