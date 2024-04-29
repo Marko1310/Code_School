@@ -20,10 +20,11 @@ function App() {
             <Route path="" element={<Home />} />
             <Route path="app" element={<ApplicationLayout />}>
               <Route index element={<Navigate to="workshops" />} />
-              <Route path="workshops" element={<Workshops />}>
-                <Route path=":lecturerId" />
+              <Route path="workshops" element={<Workshops />} />
+              <Route path="lecturers">
+                <Route path=":lecturerId" element={<Workshops />} />
+                <Route index element={<Lecturers />} />
               </Route>
-              <Route path="lecturers" element={<Lecturers />} />
               <Route
                 path="admin"
                 element={
@@ -32,8 +33,8 @@ function App() {
                   </Protected>
                 }
               />
+              <Route path="*" element={<NotFound />} />
             </Route>
-            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>

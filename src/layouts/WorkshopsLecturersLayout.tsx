@@ -4,7 +4,7 @@ import Aside from '../components/UI/Aside';
 import MainContent from '../components/MainContent';
 import AdminButton from '../components/UI/AdminButton';
 
-function UserLayout({ children }: { children: ReactNode }) {
+function WorkshopsLecturersLayout({ children }: { children: ReactNode }) {
   const { isAdmin } = useAdmin();
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
 
@@ -30,4 +30,4 @@ function UserLayout({ children }: { children: ReactNode }) {
   );
 }
 
-export default UserLayout;
+export default WorkshopsLecturersLayout;

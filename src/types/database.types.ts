@@ -13,17 +13,17 @@ export type Database = {
         Row: {
           created_at: string
           id: number
-          level: string
+          name: string
         }
         Insert: {
           created_at?: string
           id?: number
-          level: string
+          name: string
         }
         Update: {
           created_at?: string
           id?: number
-          level?: string
+          name?: string
         }
         Relationships: []
       }
@@ -194,21 +194,21 @@ export type Database = {
           description: string | null
           difficulty_id: number | null
           id: number
-          title: string
+          name: string
         }
         Insert: {
           created_at?: string
           description?: string | null
           difficulty_id?: number | null
           id?: number
-          title: string
+          name: string
         }
         Update: {
           created_at?: string
           description?: string | null
           difficulty_id?: number | null
           id?: number
-          title?: string
+          name?: string
         }
         Relationships: [
           {

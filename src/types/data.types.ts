@@ -1,3 +1,5 @@
+import { Tables } from "./database.types";
+
 export type LecturerType = {
     id: number;
     name: string;
@@ -15,7 +17,7 @@ export type LecturerType = {
 
 export type WorkshopType = {
     id: number;
-    title: string;
+    name: string;
     description: string | null;
     themes: {
         id: number;
@@ -27,6 +29,10 @@ export type WorkshopType = {
     }[];
     difficulties: {
         id: number;
-        level: string;
+        name: string;
     } | null;
 }
+
+export type ThemeType = Tables<'themes'>
+export type OrganizationType = Tables<'organizations'>
+export type DifficultyType = Tables<'difficulties'>

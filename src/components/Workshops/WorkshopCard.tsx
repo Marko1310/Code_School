@@ -11,17 +11,17 @@ function WorkshopCard({ workshop }: WorkshopProps) {
   const { isAdmin } = useAdmin();
 
   return (
-    <div className="mb-8 flex flex-col rounded-lg border bg-white p-6">
+    <div className="mb-8 flex h-fit flex-col rounded-lg border bg-white p-6">
       <div className="flex flex-col lg:flex-row lg:gap-8">
-        <p className="font-base mb-8 h-fit w-fit border-b-2 text-3xl">
-          {workshop.title}
+        <p className="font-base mb-8 w-fit border-r-2 pr-6 text-3xl">
+          {workshop.name}
         </p>
         <div className="flex flex-col gap-4 pl-4">
           <CardInfo title="Description">
             <p>{workshop.description}</p>
           </CardInfo>
           <CardInfo title="Difficulty">
-            <p>{workshop.difficulties?.level}</p>
+            <p>{workshop.difficulties?.name}</p>
           </CardInfo>
           <CardInfo title="Themes">
             {workshop?.themes?.map((theme, i) => {

@@ -26,8 +26,12 @@ const getFilteredLecturers = async (organizationId?:number, themeIds?:number[]) 
     return await query
 }
 
-const getFilteredWorkshops = async (difficultyId?:number, themeIds?:number[]) => {
-    let query = supabaseClient.from('workshops').select(`id, title, description, themes (id, name), lecturers (id, name), difficulties(id, level)`)
+const getFilteredWorkshops = async (lecturerId?:string, difficultyId?:number, themeIds?:number[]) => {
+    let query = supabaseClient.from('workshops').select(`id, name, description, themes (id, name), lecturers (id, name), difficulties(id, name)`)
+
+    if (lecturerId) {
+        query = query.eq('lecturers.id', lecturerId).not('lecturers' , 'is' , null)
+    }
 
     if (difficultyId) {
         query = query.eq('difficulty_id', difficultyId)

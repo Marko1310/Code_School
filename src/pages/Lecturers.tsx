@@ -1,11 +1,11 @@
 import LecturersList from '../components/Lecturers/LecturersList';
-import UserLayout from '../layouts/UserLayout';
+import WorkshopsLecturersLayout from '../layouts/WorkshopsLecturersLayout';
 
 function Lecturers() {
   return (
-    <UserLayout>
+    <WorkshopsLecturersLayout>
       <LecturersList />
-    </UserLayout>
+    </WorkshopsLecturersLayout>
   );
 }
 

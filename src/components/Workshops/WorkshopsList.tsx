@@ -1,24 +1,28 @@
-// import { useGetAllLecturers } from '../../queries/lecturersQueries';
-import { useGetFilteredWorkshops } from '../../queries/workshopsQueries';
+import { WorkshopType } from '../../types/data.types';
 import Loading from '../UI/Loading';
 import WorkshopCard from './WorkshopCard';
-// import LecturerCard from './LecturerCard';
 
-function WorkshopList() {
-  const { allWorkshops, isLoading } = useGetFilteredWorkshops();
+type workshopsListProps = {
+  workshops: WorkshopType[] | null | undefined;
+  isLoading: boolean;
+};
 
+function WorkshopList({ workshops, isLoading }: workshopsListProps) {
   return (
     <>
-      {isLoading && <Loading />}
-      <div className="flex flex-wrap">
-        {allWorkshops?.map((workshop) => {
-          return (
-            <div key={workshop.id} className="mb-4 w-full px-4">
-              <WorkshopCard workshop={workshop} />
-            </div>
-          );
-        })}
-      </div>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="flex flex-wrap">
+          {workshops?.map((workshop) => {
+            return (
+              <div key={workshop.id} className="mb-4 w-full px-4">
+                <WorkshopCard workshop={workshop} />
+              </div>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 }
