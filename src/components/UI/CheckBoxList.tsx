@@ -1,14 +1,17 @@
 import {
   DifficultyType,
+  Filters,
   OrganizationType,
   ThemeType,
 } from '../../types/data.types';
 
 type CheckBoxType = {
   items: ThemeType[] | OrganizationType[] | DifficultyType[];
+  filterType: keyof Filters;
+  onCheckboxChange: (themeId: number, type: keyof Filters) => void;
 };
 
-function CheckBoxList({ items }: CheckBoxType) {
+function CheckBoxList({ items, filterType, onCheckboxChange }: CheckBoxType) {
   return (
     <ul className="w-48 rounded-lg border border-gray-200 bg-white text-sm text-gray-900 ">
       {items.map((item) => {
@@ -19,7 +22,7 @@ function CheckBoxList({ items }: CheckBoxType) {
           >
             <div className="flex items-center ps-3">
               <input
-                onClick={() => console.log(item.id)}
+                onClick={() => onCheckboxChange(item.id, filterType)}
                 type="checkbox"
                 value={item.id}
                 className="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 "

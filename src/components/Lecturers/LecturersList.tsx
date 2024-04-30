@@ -1,17 +1,20 @@
-import { useGeFilteredlLecturers } from '../../queries/lecturersQueries';
+import { LecturerType } from '../../types/data.types';
 import Loading from '../UI/Loading';
 import LecturerCard from './LecturerCard';
 
-function LecturersList() {
-  const { allLecturers, isLoading } = useGeFilteredlLecturers();
+type lecturersListProps = {
+  lecturers: LecturerType[] | null | undefined;
+  isLoading: boolean;
+};
 
+function LecturersList({ lecturers, isLoading }: lecturersListProps) {
   return (
     <>
       {isLoading ? (
         <Loading />
       ) : (
         <div className="flex flex-wrap">
-          {allLecturers?.map((lecturer) => {
+          {lecturers?.map((lecturer) => {
             return (
               <div
                 key={lecturer.id}

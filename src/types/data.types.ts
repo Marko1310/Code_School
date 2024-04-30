@@ -36,3 +36,9 @@ export type WorkshopType = {
 export type ThemeType = Tables<'themes'>
 export type OrganizationType = Tables<'organizations'>
 export type DifficultyType = Tables<'difficulties'>
+
+export type Filters = {
+    difficulties?: number[];
+    themes?: number[];
+    organizations?: number[];
+  };

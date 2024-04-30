@@ -1,5 +1,6 @@
 import {
   DifficultyType,
+  Filters,
   OrganizationType,
   ThemeType,
 } from '../../types/data.types';
@@ -9,19 +10,21 @@ import Loading from './Loading';
 type AsideProps = {
   isSidebarExpanded: boolean;
   toggleExpand: () => void;
-  allThemes?: ThemeType[] | null;
-  allOrganizations?: OrganizationType[] | null;
-  allDifficulties?: DifficultyType[] | null;
+  themes?: ThemeType[] | null;
+  organizations?: OrganizationType[] | null;
+  difficulties?: DifficultyType[] | null;
   isLoading?: boolean;
+  onChangeFilter: (themeId: number, type: keyof Filters) => void;
 };
 
 function Aside({
   isSidebarExpanded,
   toggleExpand,
-  allThemes,
-  allOrganizations,
-  allDifficulties,
+  themes,
+  organizations,
+  difficulties,
   isLoading,
+  onChangeFilter,
 }: AsideProps) {
   return (
     <>
@@ -36,28 +39,40 @@ function Aside({
               Expand
             </button>
             <div className="flex flex-col gap-8">
-              {allThemes && (
+              {themes && (
                 <div>
                   <h3 className="mb-4 font-semibold text-gray-900">Themes:</h3>
-                  <CheckBoxList items={allThemes} />
+                  <CheckBoxList
+                    items={themes}
+                    filterType="themes"
+                    onCheckboxChange={onChangeFilter}
+                  />
                 </div>
               )}
 
-              {allDifficulties && (
+              {difficulties && (
                 <div>
                   <h3 className="mb-4 font-semibold text-gray-900">
                     Difficulty:
                   </h3>
-                  <CheckBoxList items={allDifficulties} />
+                  <CheckBoxList
+                    items={difficulties}
+                    filterType="difficulties"
+                    onCheckboxChange={onChangeFilter}
+                  />
                 </div>
               )}
 
-              {allOrganizations && (
+              {organizations && (
                 <div>
                   <h3 className="mb-4 font-semibold text-gray-900">
                     Organizations:
                   </h3>
-                  <CheckBoxList items={allOrganizations} />
+                  <CheckBoxList
+                    items={organizations}
+                    filterType="organizations"
+                    onCheckboxChange={onChangeFilter}
+                  />
                 </div>
               )}
             </div>

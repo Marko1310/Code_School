@@ -2,13 +2,13 @@ import { useQuery } from "react-query"
 import supabaseServices from "../services/supabaseServices"
 import { queryKeys } from "../types/queryKeys.types"
 
-const useGeFilteredlLecturers = (organizationId?: number, themesId?:Array<number>) => {
+const useGeFilteredlLecturers = (organizationId?: number[], themesId?:Array<number>) => {
     const {data, isLoading, error} = useQuery ({
-        queryKey: [queryKeys.LECTURERS_WITH_DETAILS],
+        queryKey: [queryKeys.LECTURERS_WITH_DETAILS, organizationId, themesId],
         queryFn: () => supabaseServices.getFilteredLecturers(organizationId, themesId)
     })
-    const allLecturers = data?.data
-    return {allLecturers, isLoading, error}
+    const filteredLecturers = data?.data
+    return {filteredLecturers, isLoading, error}
 }
 
 export {useGeFilteredlLecturers}

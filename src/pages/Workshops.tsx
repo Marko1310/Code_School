@@ -1,13 +1,16 @@
 import { useParams } from 'react-router-dom';
 import WorkshopsList from '../components/Workshops/WorkshopsList';
 import { useGetFilteredWorkshops } from '../queries/workshopsQueries';
-import useAllFilteres from '../hooks/useAllFilteres';
+import useAllFilters from '../hooks/useAllFilters';
 
 import { useState } from 'react';
 import { useAdmin } from '../context/AdminContext';
 import Aside from '../components/UI/Aside';
 import MainContent from '../components/MainContent';
 import AdminButton from '../components/UI/AdminButton';
+
+import { handleChangeFilter } from '../utils/filterUtils';
+import { Filters } from '../types/data.types';
 
 function Workshops() {
   const { isAdmin } = useAdmin();
@@ -19,31 +22,32 @@ function Workshops() {
 
   const { lecturerId } = useParams();
 
-  const [filters, setFilters] = useState({
-    difficulty: undefined,
+  const [filters, setFilters] = useState<Filters>({
+    difficulties: [],
     themes: [],
   });
 
   const { filteredWorkshops, isLoading } = useGetFilteredWorkshops(
     lecturerId,
-    filters.difficulty,
+    filters.difficulties,
     filters.themes,
   );
 
-  const {
-    allThemes,
-    allDifficulties,
-    isLoading: loadingFilteres,
-  } = useAllFilteres();
+  const { themes, difficulties, isLoading: loadingFilteres } = useAllFilters();
+
+  const handleFilterChange = (id: number, type: keyof Filters) => {
+    handleChangeFilter(id, type, setFilters);
+  };
 
   return (
     <div className="relative flex h-full">
       <Aside
         isSidebarExpanded={isSidebarExpanded}
         toggleExpand={toggleExpand}
-        allThemes={allThemes}
-        allDifficulties={allDifficulties}
+        themes={themes}
+        difficulties={difficulties}
         isLoading={loadingFilteres}
+        onChangeFilter={handleFilterChange}
       />
       <MainContent isSidebarExpanded={isSidebarExpanded}>
         <div className="flex flex-col">
