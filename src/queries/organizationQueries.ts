@@ -1,14 +1,14 @@
 import { useQuery } from "react-query"
-import supabaseServices from "../services/supabaseServices"
 import { queryKeys } from "../types/queryKeys.types"
+import organizationServices from "../services/organizationServices"
 
 const useGetOrganizations = () => {
     const {data, isLoading, error} = useQuery ({
         queryKey:[queryKeys.ALL_ORGANIZATIONS],
-        queryFn: () => supabaseServices.getAllOrganizations()
+        queryFn: () => organizationServices.getAllOrganizations()
     })
-    const allOrganizations = data?.data
-    return {allOrganizations, isLoading, error}
+    const organizations = data?.data
+    return {organizations, isLoading, error}
 }
 
 export {useGetOrganizations}

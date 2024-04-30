@@ -17,7 +17,7 @@ function AdminWorkshops() {
               <thead className=" bg-gray-50 uppercase">
                 <tr>
                   <TableHead data="Workshop Name" />
-                  <TableHead data="Applications" />
+                  <TableHead data="Attendees" />
                   <TableHead data="Options" />
                 </tr>
               </thead>
@@ -28,7 +28,7 @@ function AdminWorkshops() {
                     className="overflow-hidden bg-white p-4 text-center"
                   >
                     <TableData>{workshop.name}</TableData>
-                    <TableData>{workshop.id}</TableData>
+                    <TableData>{workshop.attendees}</TableData>
                     <TableData>
                       <button className="mr-1 rounded-md bg-green-400 px-3 py-1">
                         Edit

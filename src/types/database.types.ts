@@ -94,16 +94,19 @@ export type Database = {
       }
       organizations: {
         Row: {
+          address: string | null
           created_at: string
           id: number
           name: string
         }
         Insert: {
+          address?: string | null
           created_at?: string
           id?: number
           name: string
         }
         Update: {
+          address?: string | null
           created_at?: string
           id?: number
           name?: string
@@ -190,6 +193,7 @@ export type Database = {
       }
       workshops: {
         Row: {
+          attendees: number | null
           created_at: string
           description: string | null
           difficulty_id: number | null
@@ -197,6 +201,7 @@ export type Database = {
           name: string
         }
         Insert: {
+          attendees?: number | null
           created_at?: string
           description?: string | null
           difficulty_id?: number | null
@@ -204,6 +209,7 @@ export type Database = {
           name: string
         }
         Update: {
+          attendees?: number | null
           created_at?: string
           description?: string | null
           difficulty_id?: number | null

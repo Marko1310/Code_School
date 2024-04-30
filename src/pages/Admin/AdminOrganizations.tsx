@@ -5,7 +5,7 @@ import TableHead from '../../components/UI/TableHead';
 import { useGetOrganizations } from '../../queries/organizationQueries';
 
 function AdminOrganizations() {
-  const { allOrganizations, isLoading } = useGetOrganizations();
+  const { organizations, isLoading } = useGetOrganizations();
 
   {
     if (isLoading) {
@@ -23,13 +23,13 @@ function AdminOrganizations() {
                 </tr>
               </thead>
               <tbody>
-                {allOrganizations?.map((organization) => (
+                {organizations?.map((organization) => (
                   <tr
                     key={organization.id}
                     className="overflow-hidden bg-white p-4 text-center"
                   >
                     <TableData>{organization.name}</TableData>
-                    <TableData>{organization.id}</TableData>
+                    <TableData>{organization.address}</TableData>
                     <TableData>
                       <TableButton value="Edit" color="green" />
                       <TableButton value="Delete" color="red" />

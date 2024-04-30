@@ -62,7 +62,6 @@ function Aside({
                   />
                 </div>
               )}
-
               {organizations && (
                 <div>
                   <h3 className="mb-4 font-semibold text-gray-900">

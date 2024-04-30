@@ -1,11 +1,11 @@
 import { useQuery } from "react-query"
-import supabaseServices from "../services/supabaseServices"
 import { queryKeys } from "../types/queryKeys.types"
+import difficultyServices from "../services/difficultyServices"
 
 const useGetDifficulties = () => {
     const {data, isLoading, error} = useQuery ({
         queryKey:[queryKeys.ALL_DIFFICULTIES],
-        queryFn: () => supabaseServices.getAllDifficulties()
+        queryFn: () => difficultyServices.getAllDifficulties()
     })
     const difficulties = data?.data
     return {difficulties, isLoading, error}
