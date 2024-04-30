@@ -1,13 +1,16 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import ApplicationLayout from './layouts/ApplicationLayout';
-import Home from './pages/Home';
-import Workshops from './pages/Workshops';
-import Lecturers from './pages/Lecturers';
-import Admin from './pages/Admin';
+import Home from './pages/User/Home';
+import Workshops from './pages/User/Workshops';
+import Lecturers from './pages/User/Lecturers';
 import { AdminProvider } from './context/AdminContext';
-import Protected from './pages/Protected';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import NotFound from './pages/NotFound';
+import NotFound from './pages/User/NotFound';
+import ProtectedRoute from './pages/Admin/ProtectedRoute';
+import AdminLayout from './layouts/AdminLayout';
+import AdminWorkshops from './pages/Admin/AdminWorkshops';
+import AdminLecturers from './pages/Admin/AdminLecturers';
+import AdminOrganizations from './pages/Admin/AdminOrganizations';
 
 const queryClient = new QueryClient();
 
@@ -25,14 +28,18 @@ function App() {
                 <Route path=":lecturerId" element={<Workshops />} />
                 <Route index element={<Lecturers />} />
               </Route>
-              <Route
-                path="admin"
-                element={
-                  <Protected>
-                    <Admin />
-                  </Protected>
-                }
-              />
+              <Route path="admin" element={<AdminLayout />}>
+                <Route element={<ProtectedRoute />}>
+                  <Route index element={<Navigate to="workshops" />} />
+                  <Route path="workshops" element={<AdminWorkshops />} />
+                  <Route path="lecturers" index element={<AdminLecturers />} />
+                  <Route
+                    path="organizations"
+                    index
+                    element={<AdminOrganizations />}
+                  />
+                </Route>
+              </Route>
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

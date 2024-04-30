@@ -7,8 +7,8 @@ const useGetOrganizations = () => {
         queryKey:[queryKeys.ALL_ORGANIZATIONS],
         queryFn: () => supabaseServices.getAllOrganizations()
     })
-    const organizations = data?.data
-    return {organizations, isLoading, error}
+    const allOrganizations = data?.data
+    return {allOrganizations, isLoading, error}
 }
 
 export {useGetOrganizations}

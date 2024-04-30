@@ -1,16 +1,16 @@
 import { useParams } from 'react-router-dom';
-import WorkshopsList from '../components/Workshops/WorkshopsList';
-import { useGetFilteredWorkshops } from '../queries/workshopsQueries';
-import useAllFilters from '../hooks/useAllFilters';
+import WorkshopsList from '../../components/Workshops/WorkshopsList';
+import { useGetFilteredWorkshops } from '../../queries/workshopsQueries';
+import useAllFilters from '../../hooks/useAllFilters';
 
 import { useState } from 'react';
-import { useAdmin } from '../context/AdminContext';
-import Aside from '../components/UI/Aside';
-import MainContent from '../components/MainContent';
-import AdminButton from '../components/UI/AdminButton';
+import { useAdmin } from '../../context/AdminContext';
+import Aside from '../../components/UI/Aside';
+import MainContent from '../../components/MainContent';
+import AdminButton from '../../components/UI/AdminButton';
 
-import { handleChangeFilter } from '../utils/filterUtils';
-import { Filters } from '../types/data.types';
+import { handleChangeFilter } from '../../utils/filterUtils';
+import { Filters } from '../../types/data.types';
 
 function Workshops() {
   const { isAdmin } = useAdmin();

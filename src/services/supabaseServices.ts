@@ -12,6 +12,14 @@ const getAllOrganizations = async () => {
     return await supabaseClient.from('organizations').select()
 }
 
+const getAllWorkshops = async () => {
+    return await supabaseClient.from('workshops').select()
+}
+
+const getAllLecturers = async () => {
+    return await supabaseClient.from('lecturers').select(`id, name, organizations(name)`)
+}
+
 const getFilteredLecturers = async (organizationId?:number[], themeIds?:number[]) => {
     let query = supabaseClient.from('lecturers').select(`id, name, profile_url, bio, themes(id, name), organizations(id, name)`)
 
@@ -44,4 +52,4 @@ const getFilteredWorkshops = async (lecturerId?:string, difficultyId?:number[], 
     return await query
 }
 
-export default { getAllThemes, getAllDifficulties , getAllOrganizations, getFilteredLecturers, getFilteredWorkshops};
+export default { getAllThemes, getAllDifficulties , getAllOrganizations, getAllWorkshops, getAllLecturers, getFilteredLecturers, getFilteredWorkshops};
