@@ -8,11 +8,17 @@ type lecturersListProps = {
 };
 
 function LecturersList({ lecturers, isLoading }: lecturersListProps) {
-  return (
-    <>
-      {isLoading ? (
-        <Loading />
-      ) : (
+  {
+    if (isLoading) {
+      return <Loading />;
+    } else if (lecturers?.length === 0) {
+      return (
+        <div className="flex h-full w-full flex-col items-center justify-center gap-6">
+          <p className="text-2xl">No lecturers found.</p>
+        </div>
+      );
+    } else {
+      return (
         <div className="flex flex-wrap">
           {lecturers?.map((lecturer) => {
             return (
@@ -26,9 +32,9 @@ function LecturersList({ lecturers, isLoading }: lecturersListProps) {
             );
           })}
         </div>
-      )}
-    </>
-  );
+      );
+    }
+  }
 }
 
 export default LecturersList;

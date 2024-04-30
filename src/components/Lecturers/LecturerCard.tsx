@@ -37,9 +37,14 @@ function LecturerCard({ lecturer }: LecturerProps) {
         </CardInfo>
       </div>
       <div className="mt-auto flex flex-col justify-start gap-2">
-        <button className="rounded-lg border border-black px-6 py-3 transition-all hover:bg-green-200">
-          <Link to={`/app/lecturers/${lecturer.id}`}>View Workshops</Link>
-        </button>
+        <Link
+          className="flex justify-center"
+          to={`/app/lecturers/${lecturer.id}`}
+        >
+          <button className="w-full rounded-lg border border-black px-6 py-3 transition-all hover:bg-green-200">
+            View Workshops
+          </button>
+        </Link>
         <div className="mt-6 flex w-full justify-end">
           {isAdmin && <AdminButton value="Edit lecturer" />}
         </div>

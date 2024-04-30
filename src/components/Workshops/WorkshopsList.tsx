@@ -8,11 +8,17 @@ type workshopsListProps = {
 };
 
 function WorkshopList({ workshops, isLoading }: workshopsListProps) {
-  return (
-    <>
-      {isLoading ? (
-        <Loading />
-      ) : (
+  {
+    if (isLoading) {
+      return <Loading />;
+    } else if (workshops?.length === 0) {
+      return (
+        <div className="flex h-full w-full flex-col items-center justify-center gap-6">
+          <p className="text-2xl">No workshops found.</p>
+        </div>
+      );
+    } else {
+      return (
         <div className="flex flex-wrap">
           {workshops?.map((workshop) => {
             return (
@@ -22,9 +28,9 @@ function WorkshopList({ workshops, isLoading }: workshopsListProps) {
             );
           })}
         </div>
-      )}
-    </>
-  );
+      );
+    }
+  }
 }
 
 export default WorkshopList;

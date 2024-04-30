@@ -12,8 +12,8 @@ function NavButton({ route, title }: NavLinkProps) {
     <Link
       to={route}
       className={`${
-        location === route && 'bg-hover-select hover:bg-hover-select'
-      } hover:bg-hover rounded-lg px-2 py-3 transition-all lg:px-6`}
+        location.startsWith(route) && 'bg-hover-select hover:bg-hover-select'
+      } rounded-lg px-2 py-3 transition-all hover:bg-hover lg:px-6`}
     >
       {title}
     </Link>
