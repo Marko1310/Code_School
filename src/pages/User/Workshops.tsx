@@ -11,28 +11,21 @@ import AdminButton from '../../components/UI/AdminButton';
 
 import { handleChangeFilter } from '../../utils/filterUtils';
 import { Filters } from '../../types/data.types';
+import useSidebar from '../../hooks/useSidebar';
 
 function Workshops() {
-  const { isAdmin } = useAdmin();
-  const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
-
-  const toggleExpand = function () {
-    setIsSidebarExpanded((prevValue) => !prevValue);
-  };
-
-  const { lecturerId } = useParams();
-
   const [filters, setFilters] = useState<Filters>({
     difficulties: [],
     themes: [],
   });
-
+  const { isAdmin } = useAdmin();
+  const { isSidebarExpanded, toggleExpand } = useSidebar();
+  const { lecturerId } = useParams();
   const { filteredWorkshops, isLoading } = useGetFilteredWorkshops(
     lecturerId,
     filters.difficulties,
     filters.themes,
   );
-
   const { themes, difficulties, isLoading: loadingFilteres } = useAllFilters();
 
   const handleFilterChange = (id: number, type: keyof Filters) => {

@@ -1,6 +1,6 @@
 import Loading from '../../components/UI/Loading';
-import TableData from '../../components/UI/TableData';
-import TableHead from '../../components/UI/TableHead';
+import TableData from '../../components/UI/Table/TableData';
+import TableHead from '../../components/UI/Table/TableHead';
 import { useGetAllWorkshops } from '../../queries/workshopsQueries';
 
 function AdminWorkshops() {

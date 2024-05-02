@@ -35,14 +35,18 @@ function Aside({
           <Loading />
         ) : (
           <div className="flex flex-col">
+            //TODO:
             <button className="md:hidden" onClick={toggleExpand}>
               Expand
             </button>
-            <div className="flex flex-col gap-8">
+            //////
+            <div
+              className={`${!isSidebarExpanded ? 'hidden' : 'flex flex-col'}`}
+            >
               {themes && (
                 <div>
-                  <h3 className="mb-4 font-semibold text-gray-900">Themes:</h3>
                   <CheckBoxList
+                    label="Themes:"
                     items={themes}
                     filterType="themes"
                     onCheckboxChange={onChangeFilter}
@@ -52,10 +56,8 @@ function Aside({
 
               {difficulties && (
                 <div>
-                  <h3 className="mb-4 font-semibold text-gray-900">
-                    Difficulty:
-                  </h3>
                   <CheckBoxList
+                    label="Difficulty:"
                     items={difficulties}
                     filterType="difficulties"
                     onCheckboxChange={onChangeFilter}
@@ -64,10 +66,8 @@ function Aside({
               )}
               {organizations && (
                 <div>
-                  <h3 className="mb-4 font-semibold text-gray-900">
-                    Organizations:
-                  </h3>
                   <CheckBoxList
+                    label="Organizations:"
                     items={organizations}
                     filterType="organizations"
                     onCheckboxChange={onChangeFilter}

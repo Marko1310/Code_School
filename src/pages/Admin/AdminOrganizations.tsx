@@ -1,7 +1,7 @@
 import Loading from '../../components/UI/Loading';
-import TableButton from '../../components/UI/TableButton';
-import TableData from '../../components/UI/TableData';
-import TableHead from '../../components/UI/TableHead';
+import TableButton from '../../components/UI/Table/TableButton';
+import TableData from '../../components/UI/Table/TableData';
+import TableHead from '../../components/UI/Table/TableHead';
 import { useGetOrganizations } from '../../queries/organizationQueries';
 
 function AdminOrganizations() {

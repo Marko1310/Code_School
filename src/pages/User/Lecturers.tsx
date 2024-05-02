@@ -8,25 +8,19 @@ import Aside from '../../components/UI/Aside';
 import MainContent from '../../components/MainContent';
 import AdminButton from '../../components/UI/AdminButton';
 import { useGeFilteredlLecturers } from '../../queries/lecturersQueries';
+import useSidebar from '../../hooks/useSidebar';
 
 function Lecturers() {
-  const { isAdmin } = useAdmin();
-  const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
-
-  const toggleExpand = function () {
-    setIsSidebarExpanded((prevValue) => !prevValue);
-  };
-
   const [filters, setFilters] = useState<Filters>({
     organizations: [],
     themes: [],
   });
-
+  const { isAdmin } = useAdmin();
+  const { isSidebarExpanded, toggleExpand } = useSidebar();
   const { filteredLecturers, isLoading } = useGeFilteredlLecturers(
     filters.organizations,
     filters.themes,
   );
-
   const { themes, organizations, isLoading: loadingFilteres } = useAllFilters();
 
   const handleFilterChange = (id: number, type: keyof Filters) => {
