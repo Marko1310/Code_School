@@ -1,5 +1,5 @@
 import { useQuery } from "react-query"
-import { queryKeys } from "../types/queryKeys.types"
+import { queryKeys } from "../types/query.types"
 import themeServices from "../services/themeServices"
 
 const useGetThemes = () => {

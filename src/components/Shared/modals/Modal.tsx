@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import useModal from '../../hooks/useModal';
+import useModal from '../../../hooks/useModal';
 
 type Props = {
   children: React.ReactNode;

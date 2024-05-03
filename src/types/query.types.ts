@@ -1,4 +1,4 @@
-const queryKeys = {
+export const queryKeys = {
     ALL_THEMES: 'all-themes',
     ALL_WORKSHOPS:'all-workshops',
     ALL_LECTURERS: 'all-lecturers',
@@ -8,4 +8,4 @@ const queryKeys = {
     WORKSHOPS_WITH_DETAILS: 'workshops-with-details'
 } as const
 
-export {queryKeys }
+

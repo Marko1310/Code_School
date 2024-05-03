@@ -1,10 +1,14 @@
 type AdminButtonProps = {
   value: string;
+  onClick: () => void;
 };
 
-function AdminButton({ value }: AdminButtonProps) {
+function AdminButton({ value, onClick }: AdminButtonProps) {
   return (
-    <button className="h-fit rounded-lg border bg-orange-300 px-6 py-3 transition-all hover:bg-orange-400">
+    <button
+      onClick={onClick}
+      className="h-fit rounded-lg border bg-orange-300 px-6 py-3 transition-all hover:bg-orange-400"
+    >
       {value}
     </button>
   );

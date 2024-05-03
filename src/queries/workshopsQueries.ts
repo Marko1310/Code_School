@@ -1,6 +1,9 @@
-import { useQuery } from "react-query"
-import { queryKeys } from "../types/queryKeys.types"
+import { useMutation, useQuery, useQueryClient } from "react-query"
+import { queryKeys } from "../types/query.types"
 import workshopServices from "../services/workshopServices"
+import toast from "react-hot-toast"
+import { AddNewWorkshopDto } from "../types/forms.type"
+
 
 const useGetAllWorkshops = () => {
     const {data, isLoading, error} = useQuery ({
@@ -20,4 +23,26 @@ const useGetFilteredWorkshops = (lecturerId?:string, difficultyId?: Array<number
     return {filteredWorkshops, isLoading, error}
 }
 
-export {useGetAllWorkshops, useGetFilteredWorkshops}
+const useAddNewWorkshop = () => {
+    const queryClient = useQueryClient();
+  const { mutate, isLoading } = useMutation({
+        mutationFn: (data:AddNewWorkshopDto) => workshopServices.addNewWorkshop(data), 
+        onSuccess:() => {
+            queryClient.invalidateQueries({
+                queryKey: [ queryKeys.WORKSHOPS_WITH_DETAILS],
+            })
+            queryClient.invalidateQueries({
+                queryKey: [queryKeys.ALL_WORKSHOPS],
+            })
+            toast.success('Workshop successfully added ')
+        },
+        onError: (error) => {
+            console.error('Error adding workshop:', error);
+            toast.error('Workshop could not be added');
+          },
+    })
+    return {mutate, isLoading}
+}
+
+export {useGetAllWorkshops, useGetFilteredWorkshops, useAddNewWorkshop}
+
