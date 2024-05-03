@@ -1,14 +1,14 @@
-import useIsMobile from '../../hooks/useIsMobile';
+import useIsMobile from '../../../hooks/useIsMobile';
 import {
   DifficultyType,
   Filters,
   OrganizationType,
   ThemeType,
-} from '../../types/data.types';
-import CheckBoxList from './CheckBoxList';
-import Loading from './Loading';
+} from '../../../types/data.types';
+import Loading from '../Loading';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import SidebarFilters from './SidebarFilters';
 
 type AsideProps = {
   isSidebarExpanded: boolean;
@@ -52,41 +52,13 @@ function Aside({
                 )}
               </button>
             </div>
-            <div
-              className={`${!isSidebarExpanded ? 'hidden' : 'flex flex-col'} gap-10`}
-            >
-              {themes && (
-                <div>
-                  <CheckBoxList
-                    label="Themes:"
-                    items={themes}
-                    filterType="themes"
-                    onCheckboxChange={onChangeFilter}
-                  />
-                </div>
-              )}
-
-              {difficulties && (
-                <div>
-                  <CheckBoxList
-                    label="Difficulty:"
-                    items={difficulties}
-                    filterType="difficulties"
-                    onCheckboxChange={onChangeFilter}
-                  />
-                </div>
-              )}
-              {organizations && (
-                <div>
-                  <CheckBoxList
-                    label="Organizations:"
-                    items={organizations}
-                    filterType="organizations"
-                    onCheckboxChange={onChangeFilter}
-                  />
-                </div>
-              )}
-            </div>
+            <SidebarFilters
+              isSidebarExpanded={isSidebarExpanded}
+              themes={themes}
+              organizations={organizations}
+              difficulties={difficulties}
+              onChangeFilter={onChangeFilter}
+            />
           </div>
         )}
       </aside>

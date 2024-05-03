@@ -4,7 +4,7 @@ import { useAdmin } from '../../context/AdminContext';
 import { Filters } from '../../types/data.types';
 import useAllFilters from '../../hooks/useAllFilters';
 import { handleChangeFilter } from '../../utils/filterUtils';
-import Aside from '../../components/UI/Aside';
+import Aside from '../../components/UI/Sidebar/Aside';
 import MainContent from '../../components/MainContent';
 import AdminButton from '../../components/UI/AdminButton';
 import { useGeFilteredlLecturers } from '../../queries/lecturersQueries';
