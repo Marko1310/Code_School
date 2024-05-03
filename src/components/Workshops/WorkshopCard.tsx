@@ -13,10 +13,10 @@ function WorkshopCard({ workshop }: WorkshopProps) {
   return (
     <div className="mb-8 flex h-fit flex-col rounded-lg border bg-white p-6">
       <div className="flex flex-col lg:flex-row lg:gap-8">
-        <p className="font-base w-fits mb-8 border-b-2 pr-6 text-3xl lg:border-b-0 lg:border-r-2">
+        <p className="font-base mb-8 w-56 border-b-2 pr-6 text-3xl lg:border-b-0 lg:border-r-2">
           {workshop.name}
         </p>
-        <div className="flex flex-col gap-4 pl-4">
+        <div className="flex w-full flex-col gap-4 pl-4">
           <CardInfo title="Description">
             <p>{workshop.description}</p>
           </CardInfo>

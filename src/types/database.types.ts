@@ -231,7 +231,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      add_new_workshop: {
+        Args: {
+          description: string
+          name: string
+          difficulty_id: number
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never

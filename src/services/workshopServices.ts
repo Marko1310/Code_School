@@ -22,4 +22,14 @@ const getFilteredWorkshops = async (lecturerId?:string, difficultyId?:number[], 
     return await query
 }
 
-export default { getAllWorkshops, getFilteredWorkshops};
+const addNewWorkshop = async (name:string, description: string,  difficulty_id:number) => {
+    return await supabaseClient.rpc ('add_new_workshop', {
+        name, description, difficulty_id
+    })
+}
+
+const deleteWorkshop = async (workshop_id:number) => {
+    await supabaseClient.from('workshops').delete().eq("id", workshop_id)
+}
+
+export default { getAllWorkshops, getFilteredWorkshops, addNewWorkshop, deleteWorkshop};

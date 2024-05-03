@@ -11,6 +11,7 @@ import AdminLayout from './layouts/AdminLayout';
 import AdminWorkshops from './pages/Admin/AdminWorkshops';
 import AdminLecturers from './pages/Admin/AdminLecturers';
 import AdminOrganizations from './pages/Admin/AdminOrganizations';
+import Notifications from './components/Shared/Notifications';
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,7 @@ function App() {
             </Route>
           </Routes>
         </BrowserRouter>
+        <Notifications />
       </QueryClientProvider>
     </AdminProvider>
   );

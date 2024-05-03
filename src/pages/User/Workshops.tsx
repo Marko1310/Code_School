@@ -45,7 +45,7 @@ function Workshops() {
       <MainContent isSidebarExpanded={isSidebarExpanded}>
         <div className="flex flex-col">
           <div className="flex h-20 w-full justify-end">
-            {isAdmin && <AdminButton value="Add new lecturer" />}
+            {isAdmin && <AdminButton value="Add new workshop" />}
           </div>
           <WorkshopsList workshops={filteredWorkshops} isLoading={isLoading} />
         </div>
