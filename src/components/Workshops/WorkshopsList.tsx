@@ -22,7 +22,7 @@ function WorkshopList({ workshops, isLoading }: workshopsListProps) {
         <div className="flex flex-wrap">
           {workshops?.map((workshop) => {
             return (
-              <div key={workshop.id} className="mb-4 w-full px-4">
+              <div key={workshop.id} className="mb-4 w-full lg:px-4">
                 <WorkshopCard workshop={workshop} />
               </div>
             );

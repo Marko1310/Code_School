@@ -19,11 +19,7 @@ function Header() {
           colorize="background"
         />
         {isAdmin && (
-          <NavButton
-            route="/app/admin"
-            title="Administration"
-            colorize="background"
-          />
+          <NavButton route="/app/admin" title="Admin" colorize="background" />
         )}
       </div>
       <AdminToggle />

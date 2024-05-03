@@ -24,7 +24,7 @@ function LecturersList({ lecturers, isLoading }: lecturersListProps) {
             return (
               <div
                 key={lecturer.id}
-                className="mb-4 w-full px-4 lg:w-1/2"
+                className="mb-4 w-full lg:w-1/2 lg:px-4"
                 style={{ display: 'flex' }}
               >
                 <LecturerCard lecturer={lecturer} />

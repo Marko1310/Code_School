@@ -1,3 +1,4 @@
+import useIsMobile from '../../hooks/useIsMobile';
 import {
   DifficultyType,
   Filters,
@@ -6,6 +7,8 @@ import {
 } from '../../types/data.types';
 import CheckBoxList from './CheckBoxList';
 import Loading from './Loading';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 
 type AsideProps = {
   isSidebarExpanded: boolean;
@@ -26,6 +29,8 @@ function Aside({
   isLoading,
   onChangeFilter,
 }: AsideProps) {
+  const isMobile = useIsMobile();
+
   return (
     <>
       <aside
@@ -35,13 +40,20 @@ function Aside({
           <Loading />
         ) : (
           <div className="flex flex-col">
-            //TODO:
-            <button className="md:hidden" onClick={toggleExpand}>
-              Expand
-            </button>
-            //////
+            <div className="flex w-full justify-end">
+              <button
+                className={`${!isMobile ? 'hidden' : 'block'}`}
+                onClick={toggleExpand}
+              >
+                {isSidebarExpanded ? (
+                  <KeyboardArrowLeftIcon />
+                ) : (
+                  <KeyboardArrowRightIcon />
+                )}
+              </button>
+            </div>
             <div
-              className={`${!isSidebarExpanded ? 'hidden' : 'flex flex-col'}`}
+              className={`${!isSidebarExpanded ? 'hidden' : 'flex flex-col'} gap-10`}
             >
               {themes && (
                 <div>
