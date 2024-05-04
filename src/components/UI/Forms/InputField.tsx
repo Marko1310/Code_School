@@ -21,17 +21,15 @@ const InputField = <TFieldValues extends FieldValues>({
   errors,
   type,
 }: InputFieldProps<TFieldValues>) => (
-  <div className='flex flex-col gap-2'>
+  <div className="flex flex-col gap-2">
     <input
       type={type}
       {...register(name)}
       placeholder={placeholder}
-      className='text-text h-14 w-full rounded-md border border-border bg-foreground pl-2 font-montserrat text-lg font-light transition-all focus-within:border-2 hover:border-2 hover:border-neutral-400 focus:border-neutral-600 focus:outline-none'
+      className="font-montserrat h-14 w-full rounded-md border border-border bg-foreground pl-2 text-lg font-light text-text transition-all focus-within:border-2 hover:border-2 hover:border-neutral-400 focus:border-neutral-600 focus:outline-none"
     />
     {errors[name] && (
-      <p className='text-destructive-foreground'>
-        {errors[name]?.message as ReactNode}
-      </p>
+      <p className="text-red-500">{errors[name]?.message as ReactNode}</p>
     )}
   </div>
 );

@@ -36,8 +36,7 @@ const useAddNewWorkshop = () => {
             })
             toast.success('Workshop successfully added ')
         },
-        onError: (error) => {
-            console.error('Error adding workshop:', error);
+        onError: () => {
             toast.error('Workshop could not be added');
           },
     })

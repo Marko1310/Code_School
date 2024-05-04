@@ -2,7 +2,7 @@ import supabaseClient from '../config/supabaseClient';
 
 
 const getAllLecturers = async () => {
-    return await supabaseClient.from('lecturers').select(`id, name, organizations(name)`)
+    return await supabaseClient.from('lecturers').select(`id, name, created_at, organizations(name)`)
 }
 
 const getFilteredLecturers = async (organizationId?:number[], themeIds?:number[]) => {

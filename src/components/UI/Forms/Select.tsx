@@ -10,12 +10,12 @@ import { Tables } from '../../../types/database.types';
 type SelectProps<TFieldValues extends FieldValues> = {
   name: FieldPath<TFieldValues>;
   defaultValue: string;
-  options: Tables<'difficulties'>[] | null | undefined;
+  options: Tables<'difficulties' | 'lecturers' | 'themes'>[] | null | undefined;
   register: UseFormRegister<TFieldValues>;
   errors: FieldErrors<TFieldValues>;
 };
 
-const DifficultySelect = <TFieldValues extends FieldValues>({
+const Select = <TFieldValues extends FieldValues>({
   name,
   defaultValue,
   options,
@@ -37,10 +37,10 @@ const DifficultySelect = <TFieldValues extends FieldValues>({
         );
       })}
     </select>
-    {errors.days && (
-      <p className="text-red-500">{errors?.days?.message as ReactNode}</p>
+    {errors[name] && (
+      <p className="text-red-500">{errors[name]?.message as ReactNode}</p>
     )}
   </>
 );
 
-export default DifficultySelect;
+export default Select;

@@ -133,28 +133,28 @@ export type Database = {
       }
       workshop_lecturers: {
         Row: {
-          lecturer_id: number
-          workshop_id: number
+          lecturers_id: number
+          workshops_id: number
         }
         Insert: {
-          lecturer_id: number
-          workshop_id: number
+          lecturers_id: number
+          workshops_id: number
         }
         Update: {
-          lecturer_id?: number
-          workshop_id?: number
+          lecturers_id?: number
+          workshops_id?: number
         }
         Relationships: [
           {
-            foreignKeyName: "public_workshop_lecturers_lecturer_id_fkey"
-            columns: ["lecturer_id"]
+            foreignKeyName: "workshop_lecturers_lecturers_id_fkey"
+            columns: ["lecturers_id"]
             isOneToOne: false
             referencedRelation: "lecturers"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "public_workshop_lecturers_workshop_id_fkey"
-            columns: ["workshop_id"]
+            foreignKeyName: "workshop_lecturers_workshops_id_fkey"
+            columns: ["workshops_id"]
             isOneToOne: false
             referencedRelation: "workshops"
             referencedColumns: ["id"]
@@ -176,14 +176,14 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "public_workshop_themes_themes_id_fkey"
+            foreignKeyName: "workshop_themes_themes_id_fkey"
             columns: ["themes_id"]
             isOneToOne: false
             referencedRelation: "themes"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "public_workshop_themes_workshops_id_fkey"
+            foreignKeyName: "workshop_themes_workshops_id_fkey"
             columns: ["workshops_id"]
             isOneToOne: false
             referencedRelation: "workshops"
@@ -236,6 +236,8 @@ export type Database = {
           description: string
           name: string
           difficulty_id: number
+          theme_ids: string[]
+          lecturer_ids: string[]
         }
         Returns: undefined
       }

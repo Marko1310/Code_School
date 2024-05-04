@@ -24,10 +24,10 @@ const getFilteredWorkshops = async (lecturerId?:string, difficultyId?:number[], 
 }
 
 const addNewWorkshop = async (formData:AddNewWorkshopDto) => {
-    const {name, description, difficulty_id} = formData
+    const {name, description, difficulty_id, theme_ids, lecturer_ids} = formData
     
         const {data, error} = await supabaseClient.rpc ('add_new_workshop', {
-            name, description, difficulty_id
+            name, description, difficulty_id, theme_ids, lecturer_ids
         })
         if (error) throw new Error
         return data
