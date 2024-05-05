@@ -24,6 +24,8 @@ const updateOrganization = async (formData:UpdateOrganizationDto) => {
         return data
 }
 
+const deleteOrganization = async (organization_id:number) => {
+    await supabaseClient.from('organizations').delete().eq("id", organization_id)
+}
 
-
-export default { getAllOrganizations, addOrganization, updateOrganization};
+export default { getAllOrganizations, addOrganization, updateOrganization, deleteOrganization};

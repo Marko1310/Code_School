@@ -42,6 +42,7 @@ function AddOrUpdateLecturerModal({
       lecturer_name: lecturer?.name,
       lecturer_bio: lecturer?.bio,
       lecturer_organization_id: lecturer?.organizations?.id,
+      theme_ids: lecturer?.themes.map((el) => el.id.toString()),
     },
     resolver:
       type === 'add'

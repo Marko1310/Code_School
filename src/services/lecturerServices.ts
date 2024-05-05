@@ -37,5 +37,8 @@ const updateLecturer = async (formData:UpdateLecturerDto) => {
         return data
 }
 
+const deleteLecturer = async (lecturer_id:number) => {
+    await supabaseClient.from('lecturers').delete().eq("id", lecturer_id)
+}
 
-export default { getAllLecturers, getFilteredLecturers, addLecturer, updateLecturer};
+export default { getAllLecturers, getFilteredLecturers, addLecturer, updateLecturer, deleteLecturer};

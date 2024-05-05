@@ -47,4 +47,21 @@ const useUpdatetOrganization = () => {
     return {mutate, isLoading}
 }
 
-export {useGetOrganizations, useAddOrganization, useUpdatetOrganization}
+const useDeleteOrganization = () => {
+    const queryClient = useQueryClient();
+  const { mutate, isLoading } = useMutation({
+    mutationFn: (data: number) => organizationServices.deleteOrganization(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [queryKeys.ALL_ORGANIZATIONS],
+      });
+      toast.success('Organization successfully deleted');
+    },
+    onError: () => {
+      toast.error('Organization could not be deleted');
+    },
+  });
+  return { mutate, isLoading };
+}
+
+export {useGetOrganizations, useAddOrganization, useUpdatetOrganization, useDeleteOrganization}

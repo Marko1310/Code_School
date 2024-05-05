@@ -1,5 +1,7 @@
-export default function TableHead({ data }: { data: string }) {
+export default function TableHead({ value }: { value: string }) {
   return (
-    <th className="w-12 bg-gray-100 p-2 text-center font-semibold">{data}</th>
+    <div className="col-span-1 bg-gray-100 py-2 text-center font-semibold uppercase">
+      {value}
+    </div>
   );
 }

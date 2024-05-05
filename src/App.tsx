@@ -8,9 +8,9 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import NotFound from './pages/User/NotFound';
 import ProtectedRoute from './pages/Admin/ProtectedRoute';
 import AdminLayout from './layouts/AdminLayout';
-import AdminWorkshops from './pages/Admin/AdminWorkshops';
-import AdminLecturers from './pages/Admin/AdminLecturers';
-import AdminOrganizations from './pages/Admin/AdminOrganizations';
+import AdminWorkshops from './pages/Admin/workshops/AdminWorkshops';
+import AdminLecturers from './pages/Admin/lecturers/AdminLecturers';
+import AdminOrganizations from './pages/Admin/organizations/AdminOrganizations';
 import Notifications from './components/Shared/Notifications';
 
 const queryClient = new QueryClient();

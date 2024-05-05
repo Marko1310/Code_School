@@ -63,5 +63,25 @@ const useUpdatetWorkshop = () => {
     return {mutate, isLoading}
 }
 
-export {useGetAllWorkshops, useGetFilteredWorkshops, useAddWorkshop, useUpdatetWorkshop}
+const useDeleteWorkshop = () => {
+    const queryClient = useQueryClient();
+  const { mutate, isLoading } = useMutation({
+    mutationFn: (data: number) => workshopServices.deleteWorkshop(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [queryKeys.WORKSHOPS_WITH_DETAILS],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [queryKeys.ALL_WORKSHOPS],
+    });
+      toast.success('Workshop successfully deleted');
+    },
+    onError: () => {
+      toast.error('Workshop could not be deleted');
+    },
+  });
+  return { mutate, isLoading };
+}
+
+export {useGetAllWorkshops, useGetFilteredWorkshops, useAddWorkshop, useUpdatetWorkshop, useDeleteWorkshop}
 

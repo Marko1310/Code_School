@@ -58,7 +58,6 @@ function AddOrUpdateWorkshopModal({
 
   const onSubmit = (workshop: AddWorkshopDto | UpdateWorkshopDto) => {
     const updatedWorkshop = { ...workshop };
-    console.log(updatedWorkshop);
     type === 'add'
       ? addWorkshop(workshop as AddWorkshopDto)
       : updateWorkshop(updatedWorkshop as UpdateWorkshopDto);

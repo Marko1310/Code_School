@@ -62,4 +62,24 @@ const useUpdatetLecturer = () => {
     return {mutate, isLoading}
 }
 
-export {useGetAllLecturers, useGeFilteredlLecturers, useAddLecturer, useUpdatetLecturer}
+const useDeleteLecturer = () => {
+    const queryClient = useQueryClient();
+  const { mutate, isLoading } = useMutation({
+    mutationFn: (data: number) => lecturerServices.deleteLecturer(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [queryKeys.LECTURERS_WITH_DETAILS],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [queryKeys.ALL_LECTURERS],
+    });
+      toast.success('Lecturer successfully deleted');
+    },
+    onError: () => {
+      toast.error('Lecturer could not be deleted');
+    },
+  });
+  return { mutate, isLoading };
+}
+
+export {useGetAllLecturers, useGeFilteredlLecturers, useAddLecturer, useUpdatetLecturer, useDeleteLecturer}
