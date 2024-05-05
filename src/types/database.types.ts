@@ -59,7 +59,7 @@ export type Database = {
       }
       lecturers: {
         Row: {
-          bio: string | null
+          bio: string
           created_at: string
           id: number
           name: string
@@ -67,7 +67,7 @@ export type Database = {
           profile_url: string | null
         }
         Insert: {
-          bio?: string | null
+          bio: string
           created_at?: string
           id?: number
           name: string
@@ -75,7 +75,7 @@ export type Database = {
           profile_url?: string | null
         }
         Update: {
-          bio?: string | null
+          bio?: string
           created_at?: string
           id?: number
           name?: string
@@ -231,6 +231,23 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      add_lecturer: {
+        Args: {
+          lecturer_name: string
+          lecturer_bio: string
+          lecturer_organization_id: number
+        }
+        Returns: undefined
+      }
+      add_lecturer2: {
+        Args: {
+          lecturer_name: string
+          lecturer_bio: string
+          lecturer_organization_id: number
+          theme_ids: string[]
+        }
+        Returns: undefined
+      }
       add_workshop: {
         Args: {
           workshop_description: string
@@ -238,6 +255,25 @@ export type Database = {
           workshop_difficulty_id: number
           theme_ids: string[]
           lecturer_ids: string[]
+        }
+        Returns: undefined
+      }
+      update_lecturer: {
+        Args: {
+          lecturer_id: number
+          lecturer_name: string
+          lecturer_bio: string
+          lecturer_organization_id: number
+        }
+        Returns: undefined
+      }
+      update_lecturer2: {
+        Args: {
+          lecturer_id: number
+          lecturer_name: string
+          lecturer_bio: string
+          lecturer_organization_id: number
+          theme_ids: string[]
         }
         Returns: undefined
       }

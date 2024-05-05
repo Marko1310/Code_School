@@ -1,6 +1,8 @@
-import { useQuery } from "react-query"
+import { useMutation, useQuery, useQueryClient } from "react-query"
 import { queryKeys } from "../types/query.types"
 import lecturerServices from "../services/lecturerServices"
+import { AddNewLecturerDto, UpdateLecturerDto } from "../types/forms.type"
+import toast from "react-hot-toast"
 
 const useGetAllLecturers = () => {
     const {data, isLoading, error} = useQuery ({
@@ -20,4 +22,44 @@ const useGeFilteredlLecturers = (organizationId?: number[], themesId?:Array<numb
     return {filteredLecturers, isLoading, error}
 }
 
-export {useGetAllLecturers, useGeFilteredlLecturers}
+const useAddLecturer = () => {
+    const queryClient = useQueryClient();
+  const { mutate, isLoading } = useMutation({
+        mutationFn: (data:AddNewLecturerDto) => lecturerServices.addLecturer(data), 
+        onSuccess:() => {
+            queryClient.invalidateQueries({
+                queryKey: [ queryKeys.LECTURERS_WITH_DETAILS],
+            })
+            queryClient.invalidateQueries({
+                queryKey: [queryKeys.ALL_LECTURERS],
+            })
+            toast.success('Lecturer successfully added ')
+        },
+        onError: () => {
+            toast.error('Lecturer could not be added');
+          },
+    })
+    return {mutate, isLoading}
+}
+
+const useUpdatetLecturer = () => {
+    const queryClient = useQueryClient();
+  const { mutate, isLoading } = useMutation({
+        mutationFn: (data:UpdateLecturerDto) => lecturerServices.updateLecturer(data), 
+        onSuccess:() => {
+            queryClient.invalidateQueries({
+                queryKey: [ queryKeys.LECTURERS_WITH_DETAILS],
+            })
+            queryClient.invalidateQueries({
+                queryKey: [queryKeys.ALL_LECTURERS],
+            })
+            toast.success('Lecturer successfully updated')
+        },
+        onError: () => {
+            toast.error('Lecturer could not be updated');
+          },
+    })
+    return {mutate, isLoading}
+}
+
+export {useGetAllLecturers, useGeFilteredlLecturers, useAddLecturer, useUpdatetLecturer}

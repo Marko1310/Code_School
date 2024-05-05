@@ -19,3 +19,21 @@ export const UpdateWorkshopSchema = z.object({
     workshop_id: z.number().min(1),
     })
 export type UpdateWorkshopDto = z.infer<typeof UpdateWorkshopSchema>;
+
+export const AddNewLecturerSchema = z.object({
+    lecturer_name: z.string().min(1, 'Please provide a valid name'),
+    lecturer_bio: z.string().min(1, 'Please provide a valid bio'),
+    lecturer_organization_id: z.number().min(1, 'Please provide a valid organization'),
+    theme_ids: z.string().array().min(1, 'Please provide a theme'), 
+    })
+    export type AddNewLecturerDto = z.infer<typeof AddNewLecturerSchema>;
+    
+    
+    export const UpdateLecturerSchema = z.object({
+        lecturer_id: z.number().min(1),
+        lecturer_name: z.string().min(1, 'Please provide a valid name'),
+        lecturer_bio: z.string().min(1, 'Please provide a valid bio'),
+        lecturer_organization_id: z.number().min(1, 'Please provide a valid organization'),
+        theme_ids: z.string().array().min(1, 'Please provide a theme'), 
+        })
+    export type UpdateLecturerDto = z.infer<typeof UpdateLecturerSchema>;

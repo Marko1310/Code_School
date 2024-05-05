@@ -4,6 +4,10 @@ import { LecturerType } from '../../types/data.types';
 import CardInfo from '../CardInfo';
 import AdminButton from '../UI/AdminButton';
 import LecturerProfile from './LecturerProfile';
+import Modal from '../Shared/modals/Modal';
+import AddOrupdateLecturerModal from '../Shared/modals/AddOrupdateLecturerModal';
+import { useRef } from 'react';
+import useModal from '../../hooks/useModal';
 
 type LecturerProps = {
   lecturer: LecturerType;
@@ -11,6 +15,8 @@ type LecturerProps = {
 
 function LecturerCard({ lecturer }: LecturerProps) {
   const { isAdmin } = useAdmin();
+  const addOrUpdateLecturerModalRef = useRef<HTMLDialogElement>(null);
+  const { openModal, closeModal } = useModal(addOrUpdateLecturerModalRef);
 
   return (
     <div className="mb-8 flex h-full w-full flex-col justify-between rounded-lg border bg-white p-6">
@@ -46,9 +52,18 @@ function LecturerCard({ lecturer }: LecturerProps) {
           </button>
         </Link>
         <div className="mt-6 flex w-full justify-end">
-          {isAdmin && <AdminButton value="Edit lecturer" />}
+          {isAdmin && (
+            <AdminButton value="Update lecturer" onClick={openModal} />
+          )}
         </div>
       </div>
+      <Modal ref={addOrUpdateLecturerModalRef}>
+        <AddOrupdateLecturerModal
+          closeModal={closeModal}
+          lecturer={lecturer}
+          type="update"
+        />
+      </Modal>
     </div>
   );
 }

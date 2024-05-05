@@ -30,8 +30,8 @@ function Workshops() {
     filters.themes,
   );
   const { themes, difficulties, isLoading: loadingFilteres } = useAllFilters();
-  const addOrEditNewWorkshopModalRef = useRef<HTMLDialogElement>(null);
-  const { openModal, closeModal } = useModal(addOrEditNewWorkshopModalRef);
+  const addOrUpdateWorkshopModalRef = useRef<HTMLDialogElement>(null);
+  const { openModal, closeModal } = useModal(addOrUpdateWorkshopModalRef);
 
   const handleFilterChange = (id: number, type: keyof Filters) => {
     handleChangeFilter(id, type, setFilters);
@@ -56,7 +56,7 @@ function Workshops() {
           </div>
           <WorkshopsList workshops={filteredWorkshops} isLoading={isLoading} />
         </div>
-        <Modal ref={addOrEditNewWorkshopModalRef}>
+        <Modal ref={addOrUpdateWorkshopModalRef}>
           <AddOrUpdateWorkshopModal closeModal={closeModal} type="add" />
         </Modal>
       </MainContent>

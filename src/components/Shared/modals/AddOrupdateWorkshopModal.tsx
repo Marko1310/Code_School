@@ -36,8 +36,7 @@ function AddOrUpdateWorkshopModal({
     register,
     handleSubmit,
     formState: { errors, isValid },
-    // getValues,
-  } = useForm<UpdateWorkshopDto>({
+  } = useForm<AddNewWorkshopDto | UpdateWorkshopDto>({
     defaultValues: {
       workshop_id: workshop?.id,
       workshop_name: workshop?.name,
@@ -75,8 +74,6 @@ function AddOrUpdateWorkshopModal({
     }
   }, [addWorskhopLoading, updateWorskhopLoading, closeModal]);
 
-  // const values = getValues();
-  // console.log(values);
   return (
     <form className="flex flex-col gap-4 p-4" onSubmit={handleSubmit(onSubmit)}>
       <FormTitle

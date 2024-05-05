@@ -3,7 +3,7 @@ import { Tables } from "./database.types";
 export type LecturerType = {
     id: number;
     name: string;
-    bio:string | null;
+    bio:string;
     profile_url:string | null;
     organizations: {
         id: number;

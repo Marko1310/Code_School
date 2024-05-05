@@ -13,8 +13,8 @@ type WorkshopProps = {
 
 function WorkshopCard({ workshop }: WorkshopProps) {
   const { isAdmin } = useAdmin();
-  const addOrEditNewWorkshopModalRef = useRef<HTMLDialogElement>(null);
-  const { openModal, closeModal } = useModal(addOrEditNewWorkshopModalRef);
+  const addOrUpdateNewWorkshopModalRef = useRef<HTMLDialogElement>(null);
+  const { openModal, closeModal } = useModal(addOrUpdateNewWorkshopModalRef);
 
   return (
     <div className="mb-8 flex h-fit flex-col rounded-lg border bg-white p-6">
@@ -57,7 +57,7 @@ function WorkshopCard({ workshop }: WorkshopProps) {
           </CardInfo>
           <div className="mt-4 flex justify-end gap-2">
             {isAdmin && (
-              <AdminButton value="Edit workshop" onClick={openModal} />
+              <AdminButton value="Update workshop" onClick={openModal} />
             )}
             <button className="rounded-lg border border-black px-6 py-3 transition-all hover:bg-green-200">
               Apply
@@ -65,7 +65,7 @@ function WorkshopCard({ workshop }: WorkshopProps) {
           </div>
         </div>
       </div>
-      <Modal ref={addOrEditNewWorkshopModalRef}>
+      <Modal ref={addOrUpdateNewWorkshopModalRef}>
         <AddOrUpdateWorkshopModal
           closeModal={closeModal}
           workshop={workshop}
