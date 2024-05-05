@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "react-query"
 import { queryKeys } from "../types/query.types"
 import lecturerServices from "../services/lecturerServices"
-import { AddNewLecturerDto, UpdateLecturerDto } from "../types/forms.type"
+import { AddLecturerDto, UpdateLecturerDto } from "../types/forms.type"
 import toast from "react-hot-toast"
 
 const useGetAllLecturers = () => {
@@ -25,7 +25,7 @@ const useGeFilteredlLecturers = (organizationId?: number[], themesId?:Array<numb
 const useAddLecturer = () => {
     const queryClient = useQueryClient();
   const { mutate, isLoading } = useMutation({
-        mutationFn: (data:AddNewLecturerDto) => lecturerServices.addLecturer(data), 
+        mutationFn: (data:AddLecturerDto) => lecturerServices.addLecturer(data), 
         onSuccess:() => {
             queryClient.invalidateQueries({
                 queryKey: [ queryKeys.LECTURERS_WITH_DETAILS],

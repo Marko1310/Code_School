@@ -94,19 +94,19 @@ export type Database = {
       }
       organizations: {
         Row: {
-          address: string | null
+          address: string
           created_at: string
           id: number
           name: string
         }
         Insert: {
-          address?: string | null
+          address: string
           created_at?: string
           id?: number
           name: string
         }
         Update: {
-          address?: string | null
+          address?: string
           created_at?: string
           id?: number
           name?: string
@@ -236,15 +236,14 @@ export type Database = {
           lecturer_name: string
           lecturer_bio: string
           lecturer_organization_id: number
+          theme_ids: string[]
         }
         Returns: undefined
       }
-      add_lecturer2: {
+      add_organization: {
         Args: {
-          lecturer_name: string
-          lecturer_bio: string
-          lecturer_organization_id: number
-          theme_ids: string[]
+          organization_name: string
+          organization_address: string
         }
         Returns: undefined
       }
@@ -264,16 +263,15 @@ export type Database = {
           lecturer_name: string
           lecturer_bio: string
           lecturer_organization_id: number
+          theme_ids: string[]
         }
         Returns: undefined
       }
-      update_lecturer2: {
+      update_organization: {
         Args: {
-          lecturer_id: number
-          lecturer_name: string
-          lecturer_bio: string
-          lecturer_organization_id: number
-          theme_ids: string[]
+          organization_id: number
+          organization_name: string
+          organization_address: string
         }
         Returns: undefined
       }

@@ -5,7 +5,7 @@ import CardInfo from '../CardInfo';
 import AdminButton from '../UI/AdminButton';
 import useModal from '../../hooks/useModal';
 import Modal from '../Shared/modals/Modal';
-import AddOrUpdateWorkshopModal from '../Shared/modals/AddOrupdateWorkshopModal';
+import AddOrUpdateWorkshopModal from '../Shared/modals/AddOrUpdateWorkshopModal';
 
 type WorkshopProps = {
   workshop: WorkshopType;
@@ -13,8 +13,8 @@ type WorkshopProps = {
 
 function WorkshopCard({ workshop }: WorkshopProps) {
   const { isAdmin } = useAdmin();
-  const addOrUpdateNewWorkshopModalRef = useRef<HTMLDialogElement>(null);
-  const { openModal, closeModal } = useModal(addOrUpdateNewWorkshopModalRef);
+  const workshopModalRef = useRef<HTMLDialogElement>(null);
+  const { openModal, closeModal } = useModal(workshopModalRef);
 
   return (
     <div className="mb-8 flex h-fit flex-col rounded-lg border bg-white p-6">
@@ -65,7 +65,7 @@ function WorkshopCard({ workshop }: WorkshopProps) {
           </div>
         </div>
       </div>
-      <Modal ref={addOrUpdateNewWorkshopModalRef}>
+      <Modal ref={workshopModalRef}>
         <AddOrUpdateWorkshopModal
           closeModal={closeModal}
           workshop={workshop}

@@ -2,12 +2,12 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
 import {
-  useAddNewWorkshop,
+  useAddWorkshop,
   useUpdatetWorkshop,
 } from '../../../queries/workshopsQueries';
 import {
-  AddNewWorkshopDto,
-  AddNewWorkshopSchema,
+  AddWorkshopDto,
+  AddWorkshopSchema,
   UpdateWorkshopDto,
   UpdateWorkshopSchema,
 } from '../../../types/forms.type';
@@ -21,7 +21,7 @@ import CheckBox from '../../UI/Forms/CheckBox';
 import TextArea from '../../UI/Forms/TextArea';
 import { WorkshopType } from '../../../types/data.types';
 
-type newWorkshopProps = {
+type WorkshopProps = {
   type: 'add' | 'update';
   closeModal: () => void;
   workshop?: WorkshopType;
@@ -31,12 +31,12 @@ function AddOrUpdateWorkshopModal({
   type,
   closeModal,
   workshop,
-}: newWorkshopProps) {
+}: WorkshopProps) {
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<AddNewWorkshopDto | UpdateWorkshopDto>({
+  } = useForm<AddWorkshopDto | UpdateWorkshopDto>({
     defaultValues: {
       workshop_id: workshop?.id,
       workshop_name: workshop?.name,
@@ -47,20 +47,20 @@ function AddOrUpdateWorkshopModal({
     },
     resolver:
       type === 'add'
-        ? zodResolver(AddNewWorkshopSchema)
+        ? zodResolver(AddWorkshopSchema)
         : zodResolver(UpdateWorkshopSchema),
     mode: 'onChange',
   });
   const { mutate: addWorkshop, isLoading: addWorskhopLoading } =
-    useAddNewWorkshop();
+    useAddWorkshop();
   const { mutate: updateWorkshop, isLoading: updateWorskhopLoading } =
     useUpdatetWorkshop();
 
-  const onSubmit = (workshop: AddNewWorkshopDto | UpdateWorkshopDto) => {
+  const onSubmit = (workshop: AddWorkshopDto | UpdateWorkshopDto) => {
     const updatedWorkshop = { ...workshop };
     console.log(updatedWorkshop);
     type === 'add'
-      ? addWorkshop(workshop as AddNewWorkshopDto)
+      ? addWorkshop(workshop as AddWorkshopDto)
       : updateWorkshop(updatedWorkshop as UpdateWorkshopDto);
   };
 
@@ -77,7 +77,7 @@ function AddOrUpdateWorkshopModal({
   return (
     <form className="flex flex-col gap-4 p-4" onSubmit={handleSubmit(onSubmit)}>
       <FormTitle
-        title={`${type === 'add' ? 'Add new Workshop' : 'Update Workshop'}`}
+        title={`${type === 'add' ? 'Add Workshop' : 'Update Workshop'}`}
       />
       <div className="flex w-96 flex-col gap-4 lg:flex lg:w-[600px] lg:flex-row lg:gap-8">
         <div className="flex w-full flex-col gap-4">

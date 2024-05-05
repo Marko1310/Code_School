@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "react-query"
 import { queryKeys } from "../types/query.types"
 import workshopServices from "../services/workshopServices"
 import toast from "react-hot-toast"
-import { AddNewWorkshopDto, UpdateWorkshopDto } from "../types/forms.type"
+import { AddWorkshopDto, UpdateWorkshopDto } from "../types/forms.type"
 
 
 const useGetAllWorkshops = () => {
@@ -23,10 +23,10 @@ const useGetFilteredWorkshops = (lecturerId?:string, difficultyId?: Array<number
     return {filteredWorkshops, isLoading, error}
 }
 
-const useAddNewWorkshop = () => {
+const useAddWorkshop = () => {
     const queryClient = useQueryClient();
   const { mutate, isLoading } = useMutation({
-        mutationFn: (data:AddNewWorkshopDto) => workshopServices.addNewWorkshop(data), 
+        mutationFn: (data:AddWorkshopDto) => workshopServices.addWorkshop(data), 
         onSuccess:() => {
             queryClient.invalidateQueries({
                 queryKey: [ queryKeys.WORKSHOPS_WITH_DETAILS],
@@ -63,5 +63,5 @@ const useUpdatetWorkshop = () => {
     return {mutate, isLoading}
 }
 
-export {useGetAllWorkshops, useGetFilteredWorkshops, useAddNewWorkshop, useUpdatetWorkshop}
+export {useGetAllWorkshops, useGetFilteredWorkshops, useAddWorkshop, useUpdatetWorkshop}
 

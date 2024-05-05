@@ -8,8 +8,8 @@ import Select from '../../UI/Forms/Select';
 import TextArea from '../../UI/Forms/TextArea';
 import { LecturerType } from '../../../types/data.types';
 import {
-  AddNewLecturerDto,
-  AddNewLecturerSchema,
+  AddLecturerDto,
+  AddLecturerSchema,
   UpdateLecturerDto,
   UpdateLecturerSchema,
 } from '../../../types/forms.type';
@@ -21,22 +21,22 @@ import { useGetOrganizations } from '../../../queries/organizationQueries';
 import { useGetThemes } from '../../../queries/themeQueries';
 import CheckBox from '../../UI/Forms/CheckBox';
 
-type newWorkshopProps = {
+type LecturerProps = {
   type: 'add' | 'update';
   closeModal: () => void;
   lecturer?: LecturerType;
 };
 
-function AddOrupdateLecturerModal({
+function AddOrUpdateLecturerModal({
   type,
   closeModal,
   lecturer,
-}: newWorkshopProps) {
+}: LecturerProps) {
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<AddNewLecturerDto | UpdateLecturerDto>({
+  } = useForm<AddLecturerDto | UpdateLecturerDto>({
     defaultValues: {
       lecturer_id: lecturer?.id,
       lecturer_name: lecturer?.name,
@@ -45,7 +45,7 @@ function AddOrupdateLecturerModal({
     },
     resolver:
       type === 'add'
-        ? zodResolver(AddNewLecturerSchema)
+        ? zodResolver(AddLecturerSchema)
         : zodResolver(UpdateLecturerSchema),
     mode: 'onChange',
   });
@@ -54,10 +54,10 @@ function AddOrupdateLecturerModal({
   const { mutate: updateLecturer, isLoading: updateLecturerLoading } =
     useUpdatetLecturer();
 
-  const onSubmit = (lecturer: AddNewLecturerDto | UpdateLecturerDto) => {
+  const onSubmit = (lecturer: AddLecturerDto | UpdateLecturerDto) => {
     const updatedLecturer = { ...lecturer };
     type === 'add'
-      ? addLecturer(lecturer as AddNewLecturerDto)
+      ? addLecturer(lecturer as AddLecturerDto)
       : updateLecturer(updatedLecturer as UpdateLecturerDto);
   };
 
@@ -137,4 +137,4 @@ function AddOrupdateLecturerModal({
     </form>
   );
 }
-export default AddOrupdateLecturerModal;
+export default AddOrUpdateLecturerModal;

@@ -14,7 +14,7 @@ import { Filters } from '../../types/data.types';
 import useSidebar from '../../hooks/useSidebar';
 import useModal from '../../hooks/useModal';
 import Modal from '../../components/Shared/modals/Modal';
-import AddOrUpdateWorkshopModal from '../../components/Shared/modals/AddOrupdateWorkshopModal';
+import AddOrUpdateWorkshopModal from '../../components/Shared/modals/AddOrUpdateWorkshopModal';
 
 function Workshops() {
   const [filters, setFilters] = useState<Filters>({
@@ -51,7 +51,7 @@ function Workshops() {
         <div className="flex flex-col">
           <div className="flex h-20 w-full justify-end">
             {isAdmin && (
-              <AdminButton value="Add new workshop" onClick={openModal} />
+              <AdminButton value="Add workshop" onClick={openModal} />
             )}
           </div>
           <WorkshopsList workshops={filteredWorkshops} isLoading={isLoading} />

@@ -1,5 +1,5 @@
 import supabaseClient from '../config/supabaseClient';
-import { AddNewWorkshopDto, UpdateWorkshopDto } from '../types/forms.type';
+import { AddWorkshopDto, UpdateWorkshopDto } from '../types/forms.type';
 
 const getAllWorkshops = async () => {
     return await supabaseClient.from('workshops').select()
@@ -23,7 +23,7 @@ const getFilteredWorkshops = async (lecturerId?:string, difficultyId?:number[], 
     return await query
 }
 
-const addNewWorkshop = async (formData:AddNewWorkshopDto) => {
+const addWorkshop = async (formData:AddWorkshopDto) => {
     const {workshop_name, workshop_description, workshop_difficulty_id, theme_ids, lecturer_ids} = formData
 
         const {data, error} = await supabaseClient.rpc ('add_workshop', {
@@ -46,4 +46,4 @@ const deleteWorkshop = async (workshop_id:number) => {
     await supabaseClient.from('workshops').delete().eq("id", workshop_id)
 }
 
-export default { getAllWorkshops, getFilteredWorkshops, addNewWorkshop, updateWorkshop, deleteWorkshop};
+export default { getAllWorkshops, getFilteredWorkshops, addWorkshop, updateWorkshop, deleteWorkshop};

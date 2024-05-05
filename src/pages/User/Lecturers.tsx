@@ -11,7 +11,7 @@ import { useGeFilteredlLecturers } from '../../queries/lecturersQueries';
 import useSidebar from '../../hooks/useSidebar';
 import Modal from '../../components/Shared/modals/Modal';
 import useModal from '../../hooks/useModal';
-import AddOrupdateLecturerModal from '../../components/Shared/modals/AddOrupdateLecturerModal';
+import AddOrupdateLecturerModal from '../../components/Shared/modals/AddOrUpdateLecturerModal';
 
 function Lecturers() {
   const [filters, setFilters] = useState<Filters>({
@@ -47,7 +47,7 @@ function Lecturers() {
         <div className="flex flex-col">
           <div className="flex h-20 w-full justify-end">
             {isAdmin && (
-              <AdminButton value="Add new lecturer" onClick={openModal} />
+              <AdminButton value="Add lecturer" onClick={openModal} />
             )}
           </div>
           <LecturersList lecturers={filteredLecturers} isLoading={isLoading} />

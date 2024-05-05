@@ -1,5 +1,5 @@
 import supabaseClient from '../config/supabaseClient';
-import { AddNewLecturerDto, UpdateLecturerDto } from '../types/forms.type';
+import { AddLecturerDto, UpdateLecturerDto } from '../types/forms.type';
 
 
 const getAllLecturers = async () => {
@@ -18,10 +18,10 @@ const getFilteredLecturers = async (organizationId?:number[], themeIds?:number[]
     return await query
 }
 
-const addLecturer = async (formData:AddNewLecturerDto) => {
+const addLecturer = async (formData:AddLecturerDto) => {
     const {lecturer_name, lecturer_bio, lecturer_organization_id, theme_ids} = formData
 
-        const {data, error} = await supabaseClient.rpc ('add_lecturer2', {
+        const {data, error} = await supabaseClient.rpc ('add_lecturer', {
             lecturer_name, lecturer_bio, lecturer_organization_id, theme_ids
         })
         if (error) throw new Error
@@ -30,7 +30,7 @@ const addLecturer = async (formData:AddNewLecturerDto) => {
 
 const updateLecturer = async (formData:UpdateLecturerDto) => {
     const {lecturer_id, lecturer_name, lecturer_bio, lecturer_organization_id, theme_ids} = formData
-        const {data, error} = await supabaseClient.rpc ('update_lecturer2', {
+        const {data, error} = await supabaseClient.rpc ('update_lecturer', {
             lecturer_id, lecturer_name, lecturer_bio, lecturer_organization_id, theme_ids
         })
         if (error) throw new Error

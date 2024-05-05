@@ -5,7 +5,7 @@ import CardInfo from '../CardInfo';
 import AdminButton from '../UI/AdminButton';
 import LecturerProfile from './LecturerProfile';
 import Modal from '../Shared/modals/Modal';
-import AddOrupdateLecturerModal from '../Shared/modals/AddOrupdateLecturerModal';
+import AddOrupdateLecturerModal from '../Shared/modals/AddOrUpdateLecturerModal';
 import { useRef } from 'react';
 import useModal from '../../hooks/useModal';
 
