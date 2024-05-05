@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import Overlay from './UI/Overlay';
+import Overlay from './Shared/UI/Overlay';
 import useIsMobile from '../hooks/useIsMobile';
 
 type MainContentProps = {

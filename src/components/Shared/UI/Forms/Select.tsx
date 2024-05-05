@@ -5,7 +5,7 @@ import {
   FieldValues,
   UseFormRegister,
 } from 'react-hook-form';
-import { Tables } from '../../../types/database.types';
+import { Tables } from '../../../../types/database.types';
 
 type SelectProps<TFieldValues extends FieldValues> = {
   name: FieldPath<TFieldValues>;

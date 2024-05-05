@@ -1,6 +1,6 @@
-import Loading from '../../../components/UI/Loading';
-import OrganizationRow from './OrganizationRow';
-import TableHead from '../../../components/UI/Table/TableHead';
+import Loading from '../../../components/Shared/UI/Loading';
+import OrganizationRow from '../../../components/Organizations/OrganizationRow';
+import TableHead from '../../../components/Shared/UI/Table/TableHead';
 import { useGetOrganizations } from '../../../queries/organizationQueries';
 
 function AdminOrganizations() {

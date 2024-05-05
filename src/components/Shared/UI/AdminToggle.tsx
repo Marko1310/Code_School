@@ -1,5 +1,5 @@
 import Switch from '@mui/material/Switch';
-import { useAdmin } from '../../context/AdminContext';
+import { useAdmin } from '../../../context/AdminContext';
 
 function AdminToggle() {
   const { toggleIsAdmin } = useAdmin()!;

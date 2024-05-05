@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useAdmin } from '../../context/AdminContext';
 import { LecturerType } from '../../types/data.types';
 import CardInfo from '../CardInfo';
-import AdminButton from '../UI/AdminButton';
+import AdminButton from '../Shared/UI/AdminButton';
 import LecturerProfile from './LecturerProfile';
 import Modal from '../Shared/modals/Modal';
 import AddOrupdateLecturerModal from '../Shared/modals/AddOrUpdateLecturerModal';

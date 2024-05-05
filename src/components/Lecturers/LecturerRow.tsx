@@ -1,11 +1,11 @@
 import { useRef } from 'react';
-import Modal from '../../../components/Shared/modals/Modal';
-import TableButton from '../../../components/UI/Table/TableButton';
-import useModal from '../../../hooks/useModal';
-import { LecturerType } from '../../../types/data.types';
-import DeleteModal from '../../../components/Shared/modals/DeleteModal';
-import AddOrUpdateLecturerModal from '../../../components/Shared/modals/AddOrUpdateLecturerModal';
-import { useDeleteLecturer } from '../../../queries/lecturersQueries';
+import Modal from '../Shared/modals/Modal';
+import TableButton from '../Shared/UI/Table/TableButton';
+import useModal from '../../hooks/useModal';
+import { LecturerType } from '../../types/data.types';
+import DeleteModal from '../Shared/modals/DeleteModal';
+import AddOrUpdateLecturerModal from '../Shared/modals/AddOrUpdateLecturerModal';
+import { useDeleteLecturer } from '../../queries/lecturersQueries';
 
 type LecturerRowProps = {
   lecturer: LecturerType;

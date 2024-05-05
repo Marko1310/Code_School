@@ -1,4 +1,4 @@
-import { useAdmin } from '../../context/AdminContext';
+import { useAdmin } from '../../../context/AdminContext';
 import AdminToggle from './AdminToggle';
 import NavButton from './NavButton';
 

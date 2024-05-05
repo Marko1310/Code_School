@@ -1,7 +1,7 @@
-import Loading from '../../../components/UI/Loading';
+import Loading from '../../../components/Shared/UI/Loading';
 import { useGetFilteredWorkshops } from '../../../queries/workshopsQueries';
-import WorkshopRow from './WorkshopRow';
-import TableHead from '../../../components/UI/Table/TableHead';
+import WorkshopRow from '../../../components/Workshops/WorkshopRow';
+import TableHead from '../../../components/Shared/UI/Table/TableHead';
 
 function AdminWorkshops() {
   const { filteredWorkshops, isLoading } = useGetFilteredWorkshops();

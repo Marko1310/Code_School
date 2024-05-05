@@ -1,6 +1,6 @@
-import Loading from '../../../components/UI/Loading';
-import LecturerRow from './LecturerRow';
-import TableHead from '../../../components/UI/Table/TableHead';
+import Loading from '../../../components/Shared/UI/Loading';
+import LecturerRow from '../../../components/Lecturers/LecturerRow';
+import TableHead from '../../../components/Shared/UI/Table/TableHead';
 import { useGeFilteredlLecturers } from '../../../queries/lecturersQueries';
 
 function AdminLecturers() {

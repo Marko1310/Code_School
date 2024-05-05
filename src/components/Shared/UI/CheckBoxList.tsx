@@ -3,7 +3,7 @@ import {
   Filters,
   OrganizationType,
   ThemeType,
-} from '../../types/data.types';
+} from '../../../types/data.types';
 
 type CheckBoxType = {
   label: string;

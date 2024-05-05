@@ -2,10 +2,10 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
 
-import FormTitle from '../../UI/Forms/FormTitle';
-import InputField from '../../UI/Forms/InputField';
-import Select from '../../UI/Forms/Select';
-import TextArea from '../../UI/Forms/TextArea';
+import FormTitle from '../UI/Forms/FormTitle';
+import InputField from '../UI/Forms/InputField';
+import Select from '../UI/Forms/Select';
+import TextArea from '../UI/Forms/TextArea';
 import { LecturerType } from '../../../types/data.types';
 import {
   AddLecturerDto,
@@ -19,7 +19,7 @@ import {
 } from '../../../queries/lecturersQueries';
 import { useGetOrganizations } from '../../../queries/organizationQueries';
 import { useGetThemes } from '../../../queries/themeQueries';
-import CheckBox from '../../UI/Forms/CheckBox';
+import CheckBox from '../UI/Forms/CheckBox';
 
 type LecturerProps = {
   type: 'add' | 'update';

@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useAdmin } from '../../context/AdminContext';
 import { WorkshopType } from '../../types/data.types';
 import CardInfo from '../CardInfo';
-import AdminButton from '../UI/AdminButton';
+import AdminButton from '../Shared/UI/AdminButton';
 import useModal from '../../hooks/useModal';
 import Modal from '../Shared/modals/Modal';
 import AddOrUpdateWorkshopModal from '../Shared/modals/AddOrUpdateWorkshopModal';

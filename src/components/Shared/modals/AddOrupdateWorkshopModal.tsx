@@ -11,14 +11,14 @@ import {
   UpdateWorkshopDto,
   UpdateWorkshopSchema,
 } from '../../../types/forms.type';
-import FormTitle from '../../UI/Forms/FormTitle';
-import InputField from '../../UI/Forms/InputField';
-import Select from '../../UI/Forms/Select';
+import FormTitle from '../UI/Forms/FormTitle';
+import InputField from '../UI/Forms/InputField';
+import Select from '../UI/Forms/Select';
 import { useGetDifficulties } from '../../../queries/difficultyQueries';
 import { useGetAllLecturers } from '../../../queries/lecturersQueries';
 import { useGetThemes } from '../../../queries/themeQueries';
-import CheckBox from '../../UI/Forms/CheckBox';
-import TextArea from '../../UI/Forms/TextArea';
+import CheckBox from '../UI/Forms/CheckBox';
+import TextArea from '../UI/Forms/TextArea';
 import { WorkshopType } from '../../../types/data.types';
 
 type WorkshopProps = {

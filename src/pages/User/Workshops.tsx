@@ -5,9 +5,9 @@ import useAllFilters from '../../hooks/useAllFilters';
 
 import { useRef, useState } from 'react';
 import { useAdmin } from '../../context/AdminContext';
-import Aside from '../../components/UI/Sidebar/Aside';
+import Aside from '../../components/Shared/UI/Sidebar/Aside';
 import MainContent from '../../components/MainContent';
-import AdminButton from '../../components/UI/AdminButton';
+import AdminButton from '../../components/Shared/UI/AdminButton';
 
 import { handleChangeFilter } from '../../utils/filterUtils';
 import { Filters } from '../../types/data.types';

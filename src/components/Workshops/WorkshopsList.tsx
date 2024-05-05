@@ -1,5 +1,5 @@
 import { WorkshopType } from '../../types/data.types';
-import Loading from '../UI/Loading';
+import Loading from '../Shared/UI/Loading';
 import WorkshopCard from './WorkshopCard';
 
 type workshopsListProps = {

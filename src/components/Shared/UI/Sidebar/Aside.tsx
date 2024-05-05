@@ -1,10 +1,10 @@
-import useIsMobile from '../../../hooks/useIsMobile';
+import useIsMobile from '../../../../hooks/useIsMobile';
 import {
   DifficultyType,
   Filters,
   OrganizationType,
   ThemeType,
-} from '../../../types/data.types';
+} from '../../../../types/data.types';
 import Loading from '../Loading';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';

@@ -1,5 +1,5 @@
 import { FieldPath, FieldValues, UseFormRegister } from 'react-hook-form';
-import { Tables } from '../../../types/database.types';
+import { Tables } from '../../../../types/database.types';
 
 type CheckBoxProps<TFieldValues extends FieldValues> = {
   name: FieldPath<TFieldValues>;
