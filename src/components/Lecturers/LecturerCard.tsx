@@ -19,7 +19,7 @@ function LecturerCard({ lecturer }: LecturerProps) {
   const { openModal, closeModal } = useModal(addOrUpdateLecturerModalRef);
 
   return (
-    <div className="mb-8 flex h-full w-full flex-col justify-between rounded-lg border bg-white p-6">
+    <div className="mb-8 flex h-full w-full flex-col justify-between rounded-lg border border-slate-400 bg-background p-6">
       <div className="mb-4">
         <LecturerProfile name={lecturer.name} image={lecturer.profile_url} />
       </div>

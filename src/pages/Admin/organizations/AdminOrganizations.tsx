@@ -11,18 +11,16 @@ function AdminOrganizations() {
       return <Loading />;
     } else
       return (
-        <div className="">
-          <div className="grid grid-cols-3 border bg-white">
-            <TableHead value="Title" />
-            <TableHead value="Address" />
-            <TableHead value="Options" />
-            {organizations?.map((organization) => (
-              <OrganizationRow
-                key={organization.id}
-                organization={organization}
-              />
-            ))}
-          </div>
+        <div className="grid grid-cols-3 border border-slate-400  bg-background">
+          <TableHead value="Title" />
+          <TableHead value="Address" />
+          <TableHead value="Options" />
+          {organizations?.map((organization) => (
+            <OrganizationRow
+              key={organization.id}
+              organization={organization}
+            />
+          ))}
         </div>
       );
   }

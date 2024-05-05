@@ -6,6 +6,7 @@ import { OrganizationType } from '../../types/data.types';
 import DeleteModal from '../Shared/modals/DeleteModal';
 import AddOrUpdateOrganizationModal from '../Shared/modals/AddOrUpdateOrganizationModal';
 import { useDeleteOrganization } from '../../queries/organizationQueries';
+import TableColumn from '../Shared/UI/Table/TableColumn';
 
 type OrganizationRowProps = {
   organization: OrganizationType;
@@ -25,20 +26,16 @@ function OrganizationRow({ organization }: OrganizationRowProps) {
 
   return (
     <>
-      <div className="col-span-1 flex items-center justify-center border-b p-5">
-        {organization.name}
-      </div>
-      <div className="col-span-1 flex items-center justify-center border-b p-5">
-        {organization.address}
-      </div>
-      <div className="col-span-1 flex items-center justify-center border-b p-5 ">
+      <TableColumn>{organization.name}</TableColumn>
+      <TableColumn>{organization.address}</TableColumn>
+      <TableColumn>
         <TableButton
           value="Edit"
           color="green"
           onClick={openOrganizationModal}
         />
         <TableButton value="Delete" color="red" onClick={openDeleteModal} />
-      </div>
+      </TableColumn>
       <Modal ref={updateOrganizationModalRef}>
         <AddOrUpdateOrganizationModal
           closeModal={closeOrganizationModal}

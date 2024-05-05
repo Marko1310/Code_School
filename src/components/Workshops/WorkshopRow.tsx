@@ -6,6 +6,7 @@ import useModal from '../../hooks/useModal';
 import { WorkshopType } from '../../types/data.types';
 import { useDeleteWorkshop } from '../../queries/workshopsQueries';
 import DeleteModal from '../Shared/modals/DeleteModal';
+import TableColumn from '../Shared/UI/Table/TableColumn';
 
 type WorkshopRowProps = {
   workshop: WorkshopType;
@@ -23,16 +24,12 @@ function WorkshopRow({ workshop }: WorkshopRowProps) {
 
   return (
     <>
-      <div className="col-span-1 flex items-center justify-center border-b p-5">
-        {workshop.name}
-      </div>
-      <div className="col-span-1 flex items-center justify-center border-b p-5">
-        {workshop.id}
-      </div>
-      <div className="col-span-1 flex items-center justify-center border-b p-5 ">
+      <TableColumn>{workshop.name}</TableColumn>
+      <TableColumn>{workshop.id}</TableColumn>
+      <TableColumn>
         <TableButton value="Edit" color="green" onClick={openWorkshopModal} />
         <TableButton value="Delete" color="red" onClick={openDeleteModal} />
-      </div>
+      </TableColumn>
       <Modal ref={updateWorkshopModalRef}>
         <AddOrUpdateWorkshopModal
           closeModal={closeWorkshopModal}

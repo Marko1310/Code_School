@@ -5,9 +5,8 @@ import useAllFilters from '../../hooks/useAllFilters';
 
 import { useRef, useState } from 'react';
 import { useAdmin } from '../../context/AdminContext';
-import Aside from '../../components/Shared/UI/Sidebar/Aside';
+
 import MainContent from '../../components/MainContent';
-import AdminButton from '../../components/Shared/UI/AdminButton';
 
 import { handleChangeFilter } from '../../utils/filterUtils';
 import { Filters } from '../../types/data.types';
@@ -15,6 +14,8 @@ import useSidebar from '../../hooks/useSidebar';
 import useModal from '../../hooks/useModal';
 import Modal from '../../components/Shared/modals/Modal';
 import AddOrUpdateWorkshopModal from '../../components/Shared/modals/AddOrUpdateWorkshopModal';
+import AdminButton from '../../components/Shared/UI/AdminButton';
+import Aside from '../../components/Shared/UI/Sidebar/Aside';
 
 function Workshops() {
   const [filters, setFilters] = useState<Filters>({

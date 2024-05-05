@@ -14,6 +14,8 @@
   :root {
     --background: #ffffff;
     --foreground: #ffffff;
+    --admin: #f1b04f;
+    --admin-foreground: #f1a22c;
     --primary: #fdba74;
     --primary-foreground: #fb923c;
     --muted: 240 4.8% 95.9%;
@@ -33,6 +35,8 @@
   .dark {
     --background: #0d0b0b;
     --foreground: #1c1917;
+    --admin: #f1b04f;
+    --admin-foreground: #f2ab40;
     --primary: #fb923c;
     --primary-foreground: #f97316;
     --secondary: 240 3.7% 15.9%;

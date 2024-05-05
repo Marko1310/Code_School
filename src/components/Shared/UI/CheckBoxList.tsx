@@ -21,7 +21,7 @@ function CheckBoxList({
   return (
     <>
       <h3 className="mb-4 font-semibold text-gray-900">{label}</h3>
-      <ul className="w-48 rounded-lg border border-gray-200 bg-white text-sm text-gray-900 ">
+      <ul className="w-48 rounded-lg border border-slate-400 bg-slate-50 text-sm text-gray-900">
         {items.map((item) => {
           return (
             <li

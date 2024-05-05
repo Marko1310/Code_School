@@ -11,15 +11,13 @@ function AdminWorkshops() {
       return <Loading />;
     } else
       return (
-        <div className="">
-          <div className="grid grid-cols-3 border bg-white">
-            <TableHead value="Title" />
-            <TableHead value="Attendees" />
-            <TableHead value="Options" />
-            {filteredWorkshops?.map((workshop) => (
-              <WorkshopRow key={workshop.id} workshop={workshop} />
-            ))}
-          </div>
+        <div className="grid grid-cols-3 border border-slate-400 bg-background">
+          <TableHead value="Title" />
+          <TableHead value="Attendees" />
+          <TableHead value="Options" />
+          {filteredWorkshops?.map((workshop) => (
+            <WorkshopRow key={workshop.id} workshop={workshop} />
+          ))}
         </div>
       );
   }

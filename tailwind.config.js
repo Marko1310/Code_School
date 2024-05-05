@@ -9,6 +9,11 @@ export default {
         ring: 'var(--ring)',
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        admin: {
+          DEFAULT: 'var(--admin)',
+          foreground: 'var(--admin-foreground)',
+        },
+
         primary: {
           DEFAULT: 'var(--primary)',
           foreground: 'var(--primary-foreground)',

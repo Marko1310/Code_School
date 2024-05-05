@@ -17,7 +17,7 @@ function WorkshopCard({ workshop }: WorkshopProps) {
   const { openModal, closeModal } = useModal(workshopModalRef);
 
   return (
-    <div className="mb-8 flex h-fit flex-col rounded-lg border bg-white p-6">
+    <div className="mb-8 flex h-fit flex-col rounded-lg border border-slate-400 bg-background p-6">
       <div className="flex flex-col lg:flex-row lg:gap-8">
         <p className="font-base mb-8 w-56 border-b-2 pr-6 text-3xl lg:border-b-0 lg:border-r-2">
           {workshop.name}

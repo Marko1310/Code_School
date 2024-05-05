@@ -6,6 +6,7 @@ import { LecturerType } from '../../types/data.types';
 import DeleteModal from '../Shared/modals/DeleteModal';
 import AddOrUpdateLecturerModal from '../Shared/modals/AddOrUpdateLecturerModal';
 import { useDeleteLecturer } from '../../queries/lecturersQueries';
+import TableColumn from '../Shared/UI/Table/TableColumn';
 
 type LecturerRowProps = {
   lecturer: LecturerType;
@@ -23,16 +24,12 @@ function LecturerRow({ lecturer }: LecturerRowProps) {
 
   return (
     <>
-      <div className="col-span-1 flex items-center justify-center border-b p-5">
-        {lecturer.name}
-      </div>
-      <div className="col-span-1 flex items-center justify-center border-b p-5">
-        {lecturer.organizations?.name}
-      </div>
-      <div className="col-span-1 flex items-center justify-center border-b p-5 ">
+      <TableColumn>{lecturer.name}</TableColumn>
+      <TableColumn>{lecturer.organizations?.name}</TableColumn>
+      <TableColumn>
         <TableButton value="Edit" color="green" onClick={openLecturerModal} />
         <TableButton value="Delete" color="red" onClick={openDeleteModal} />
-      </div>
+      </TableColumn>
       <Modal ref={updateLecturerModalRef}>
         <AddOrUpdateLecturerModal
           closeModal={closeLecturerModal}
