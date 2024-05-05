@@ -19,6 +19,7 @@ export type WorkshopType = {
     id: number;
     name: string;
     description: string;
+    attendees: number;
     themes: {
         id: number;
         name: string;

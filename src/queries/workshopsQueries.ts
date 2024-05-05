@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "react-query"
 import { queryKeys } from "../types/query.types"
 import workshopServices from "../services/workshopServices"
 import toast from "react-hot-toast"
-import { AddWorkshopDto, UpdateWorkshopDto } from "../types/forms.type"
+import { AddUserToWorkshopDto, AddWorkshopDto, UpdateWorkshopDto } from "../types/forms.type"
 
 
 const useGetAllWorkshops = () => {
@@ -83,5 +83,25 @@ const useDeleteWorkshop = () => {
   return { mutate, isLoading };
 }
 
-export {useGetAllWorkshops, useGetFilteredWorkshops, useAddWorkshop, useUpdatetWorkshop, useDeleteWorkshop}
+const useAddUserToWorkshop = () => {
+  const queryClient = useQueryClient();
+const { mutate, isLoading } = useMutation({
+  mutationFn: (data: AddUserToWorkshopDto) => workshopServices.addUserToWorkshop(data),
+  onSuccess: () => {
+    queryClient.invalidateQueries({
+      queryKey: [queryKeys.WORKSHOPS_WITH_DETAILS],
+    });
+    queryClient.invalidateQueries({
+      queryKey: [queryKeys.ALL_WORKSHOPS],
+  });
+    toast.success('You have succesfully applied to the workshop');
+  },
+  onError: () => {
+    toast.error('Ooops, looks like you already applied');
+  },
+});
+return { mutate, isLoading };
+}
+
+export {useGetAllWorkshops, useGetFilteredWorkshops, useAddWorkshop, useUpdatetWorkshop, useDeleteWorkshop, useAddUserToWorkshop}
 

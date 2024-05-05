@@ -20,6 +20,14 @@ export const UpdateWorkshopSchema = z.object({
 export type UpdateWorkshopDto = z.infer<typeof UpdateWorkshopSchema>;
 
 
+export const AddUserToWorkshopSchema = z.object({
+    workshop_id: z.number().min(1),
+    email: z.string().email('Please provide a valid email'),
+    name: z.string().min(1, 'Please provide a valid name'),
+})
+export type AddUserToWorkshopDto = z.infer<typeof AddUserToWorkshopSchema>;
+
+
 export const AddLecturerSchema = z.object({
     lecturer_name: z.string().min(1, 'Please provide a valid name'),
     lecturer_bio: z.string().min(1, 'Please provide a valid bio'),

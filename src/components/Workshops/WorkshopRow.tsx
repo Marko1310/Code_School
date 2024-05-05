@@ -25,7 +25,7 @@ function WorkshopRow({ workshop }: WorkshopRowProps) {
   return (
     <>
       <TableColumn>{workshop.name}</TableColumn>
-      <TableColumn>{workshop.id}</TableColumn>
+      <TableColumn>{workshop.attendees}</TableColumn>
       <TableColumn>
         <TableButton value="Edit" color="green" onClick={openWorkshopModal} />
         <TableButton value="Delete" color="red" onClick={openDeleteModal} />

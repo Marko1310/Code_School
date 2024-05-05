@@ -161,6 +161,32 @@ export type Database = {
           },
         ]
       }
+      workshop_registration: {
+        Row: {
+          email: string
+          name: string
+          workshop_id: number
+        }
+        Insert: {
+          email: string
+          name: string
+          workshop_id: number
+        }
+        Update: {
+          email?: string
+          name?: string
+          workshop_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "workshop_registration_workshop_id_fkey"
+            columns: ["workshop_id"]
+            isOneToOne: true
+            referencedRelation: "workshops"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       workshop_themes: {
         Row: {
           themes_id: number
@@ -193,7 +219,7 @@ export type Database = {
       }
       workshops: {
         Row: {
-          attendees: number | null
+          attendees: number
           created_at: string
           description: string
           difficulty_id: number | null
@@ -201,7 +227,7 @@ export type Database = {
           name: string
         }
         Insert: {
-          attendees?: number | null
+          attendees?: number
           created_at?: string
           description: string
           difficulty_id?: number | null
@@ -209,7 +235,7 @@ export type Database = {
           name: string
         }
         Update: {
-          attendees?: number | null
+          attendees?: number
           created_at?: string
           description?: string
           difficulty_id?: number | null
@@ -244,6 +270,14 @@ export type Database = {
         Args: {
           organization_name: string
           organization_address: string
+        }
+        Returns: undefined
+      }
+      add_user_to_workshop: {
+        Args: {
+          workshop_id: number
+          email: string
+          name: string
         }
         Returns: undefined
       }

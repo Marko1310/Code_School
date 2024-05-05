@@ -6,6 +6,7 @@ import AdminButton from '../Shared/UI/AdminButton';
 import useModal from '../../hooks/useModal';
 import Modal from '../Shared/modals/Modal';
 import AddOrUpdateWorkshopModal from '../Shared/modals/AddOrUpdateWorkshopModal';
+import AddUserToWorkshopModal from '../Shared/modals/AddUserToWorkshopModal';
 
 type WorkshopProps = {
   workshop: WorkshopType;
@@ -14,7 +15,11 @@ type WorkshopProps = {
 function WorkshopCard({ workshop }: WorkshopProps) {
   const { isAdmin } = useAdmin();
   const workshopModalRef = useRef<HTMLDialogElement>(null);
-  const { openModal, closeModal } = useModal(workshopModalRef);
+  const applicationModalRef = useRef<HTMLDialogElement>(null);
+  const { openModal: openWorkshopModal, closeModal: closeWorkshopModal } =
+    useModal(workshopModalRef);
+  const { openModal: openApplicationModal, closeModal: closeApplicationModal } =
+    useModal(applicationModalRef);
 
   return (
     <div className="mb-8 flex h-fit flex-col rounded-lg border border-slate-400 bg-background p-6">
@@ -57,9 +62,15 @@ function WorkshopCard({ workshop }: WorkshopProps) {
           </CardInfo>
           <div className="mt-4 flex justify-end gap-2">
             {isAdmin && (
-              <AdminButton value="Update workshop" onClick={openModal} />
+              <AdminButton
+                value="Update workshop"
+                onClick={openWorkshopModal}
+              />
             )}
-            <button className="rounded-lg border border-black px-6 py-3 transition-all hover:bg-green-200">
+            <button
+              onClick={openApplicationModal}
+              className="rounded-lg border border-black px-6 py-3 transition-all hover:bg-green-200"
+            >
               Apply
             </button>
           </div>
@@ -67,9 +78,15 @@ function WorkshopCard({ workshop }: WorkshopProps) {
       </div>
       <Modal ref={workshopModalRef}>
         <AddOrUpdateWorkshopModal
-          closeModal={closeModal}
+          closeModal={closeWorkshopModal}
           workshop={workshop}
           type="update"
+        />
+      </Modal>
+      <Modal ref={applicationModalRef}>
+        <AddUserToWorkshopModal
+          closeModal={closeApplicationModal}
+          workshop_id={workshop.id}
         />
       </Modal>
     </div>

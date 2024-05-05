@@ -1,12 +1,12 @@
 import supabaseClient from '../config/supabaseClient';
-import { AddWorkshopDto, UpdateWorkshopDto } from '../types/forms.type';
+import { AddUserToWorkshopDto, AddWorkshopDto, UpdateWorkshopDto } from '../types/forms.type';
 
 const getAllWorkshops = async () => {
     return await supabaseClient.from('workshops').select()
 }
 
 const getFilteredWorkshops = async (lecturerId?:string, difficultyId?:number[], themeIds?:number[]) => {
-    let query = supabaseClient.from('workshops').select(`id, name, description, themes (id, name), lecturers (id, name), difficulties(id, name)`)
+    let query = supabaseClient.from('workshops').select(`id, name, description, attendees, themes (id, name), lecturers (id, name), difficulties(id, name)`)
 
     if (lecturerId) {
         query = query.eq('lecturers.id', lecturerId).not('lecturers' , 'is' , null)
@@ -46,4 +46,13 @@ const deleteWorkshop = async (workshop_id:number) => {
     await supabaseClient.from('workshops').delete().eq("id", workshop_id)
 }
 
-export default { getAllWorkshops, getFilteredWorkshops, addWorkshop, updateWorkshop, deleteWorkshop};
+const addUserToWorkshop = async (formData:AddUserToWorkshopDto) => {
+    const {workshop_id, email, name} = formData
+        const {data, error} = await supabaseClient.rpc ('add_user_to_workshop', {
+            workshop_id, email, name
+        })
+        if (error) throw new Error
+        return data
+}
+
+export default { getAllWorkshops, getFilteredWorkshops, addWorkshop, updateWorkshop, deleteWorkshop, addUserToWorkshop};
