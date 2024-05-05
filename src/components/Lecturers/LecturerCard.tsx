@@ -19,7 +19,7 @@ function LecturerCard({ lecturer }: LecturerProps) {
   const { openModal, closeModal } = useModal(addOrUpdateLecturerModalRef);
 
   return (
-    <div className="mb-8 flex h-full w-full flex-col justify-between rounded-lg border border-slate-400 bg-background p-6">
+    <div className="mb-8 flex h-full w-full flex-col justify-between rounded-lg border border-border bg-foreground p-6 text-text">
       <div className="mb-4">
         <LecturerProfile name={lecturer.name} image={lecturer.profile_url} />
       </div>
@@ -47,7 +47,7 @@ function LecturerCard({ lecturer }: LecturerProps) {
           className="flex justify-center"
           to={`/app/lecturers/${lecturer.id}`}
         >
-          <button className="w-full rounded-lg border border-black px-6 py-3 transition-all hover:bg-green-200">
+          <button className="bg-user w-full rounded-lg border border-border px-6 py-3 transition-all hover:bg-green-200">
             View Workshops
           </button>
         </Link>

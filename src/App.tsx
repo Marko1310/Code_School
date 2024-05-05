@@ -12,42 +12,49 @@ import AdminWorkshops from './pages/Admin/workshops/AdminWorkshops';
 import AdminLecturers from './pages/Admin/lecturers/AdminLecturers';
 import AdminOrganizations from './pages/Admin/organizations/AdminOrganizations';
 import Notifications from './components/Shared/Notifications';
+import { DarkModeProvider } from './context/DarkModeContext';
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
-    <AdminProvider>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="" element={<Home />} />
-            <Route path="app" element={<ApplicationLayout />}>
-              <Route index element={<Navigate to="workshops" />} />
-              <Route path="workshops" element={<Workshops />} />
-              <Route path="lecturers">
-                <Route path=":lecturerId" element={<Workshops />} />
-                <Route index element={<Lecturers />} />
-              </Route>
-              <Route path="admin" element={<AdminLayout />}>
-                <Route element={<ProtectedRoute />}>
-                  <Route index element={<Navigate to="workshops" />} />
-                  <Route path="workshops" element={<AdminWorkshops />} />
-                  <Route path="lecturers" index element={<AdminLecturers />} />
-                  <Route
-                    path="organizations"
-                    index
-                    element={<AdminOrganizations />}
-                  />
+    <DarkModeProvider>
+      <AdminProvider>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="" element={<Home />} />
+              <Route path="app" element={<ApplicationLayout />}>
+                <Route index element={<Navigate to="workshops" />} />
+                <Route path="workshops" element={<Workshops />} />
+                <Route path="lecturers">
+                  <Route path=":lecturerId" element={<Workshops />} />
+                  <Route index element={<Lecturers />} />
                 </Route>
+                <Route path="admin" element={<AdminLayout />}>
+                  <Route element={<ProtectedRoute />}>
+                    <Route index element={<Navigate to="workshops" />} />
+                    <Route path="workshops" element={<AdminWorkshops />} />
+                    <Route
+                      path="lecturers"
+                      index
+                      element={<AdminLecturers />}
+                    />
+                    <Route
+                      path="organizations"
+                      index
+                      element={<AdminOrganizations />}
+                    />
+                  </Route>
+                </Route>
+                <Route path="*" element={<NotFound />} />
               </Route>
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-        <Notifications />
-      </QueryClientProvider>
-    </AdminProvider>
+            </Routes>
+          </BrowserRouter>
+          <Notifications />
+        </QueryClientProvider>
+      </AdminProvider>
+    </DarkModeProvider>
   );
 }
 

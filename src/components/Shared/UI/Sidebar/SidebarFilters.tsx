@@ -23,7 +23,7 @@ function SidebarFilters({
 }: SidebarFiltersProps) {
   return (
     <div
-      className={`${!isSidebarExpanded ? 'hidden' : 'flex flex-col'} gap-10`}
+      className={`${!isSidebarExpanded ? 'hidden' : 'flex flex-col'} gap-10 `}
     >
       {themes && (
         <div>

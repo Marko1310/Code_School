@@ -7,13 +7,17 @@ export default {
         border: 'var(--border)',
         input: 'var(--input)',
         ring: 'var(--ring)',
-        background: 'var(--background)',
+        background: {
+          admin: 'var(--background-admin)',
+          user: 'var(--background-user)',
+        },
+        // 'var(--background)',
         foreground: 'var(--foreground)',
         admin: {
           DEFAULT: 'var(--admin)',
           foreground: 'var(--admin-foreground)',
         },
-
+        user: 'var(--user)',
         primary: {
           DEFAULT: 'var(--primary)',
           foreground: 'var(--primary-foreground)',

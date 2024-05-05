@@ -6,7 +6,7 @@ function Header() {
   const { isAdmin } = useAdmin();
 
   return (
-    <nav className="flex items-center border bg-background py-2 shadow-lg md:gap-4 md:px-4">
+    <nav className="flex items-center border border-border bg-foreground py-2 text-text shadow-lg md:gap-4 md:px-4">
       <div className="flex flex-1 md:gap-16 md:pl-6">
         <NavButton
           route="/app/workshops"

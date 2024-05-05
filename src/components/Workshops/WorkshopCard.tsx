@@ -22,7 +22,7 @@ function WorkshopCard({ workshop }: WorkshopProps) {
     useModal(applicationModalRef);
 
   return (
-    <div className="mb-8 flex h-fit flex-col rounded-lg border border-slate-400 bg-background p-6">
+    <div className="mb-8 flex h-fit flex-col rounded-lg border border-border bg-foreground p-6 text-text">
       <div className="flex flex-col lg:flex-row lg:gap-8">
         <p className="font-base mb-8 w-56 border-b-2 pr-6 text-3xl lg:border-b-0 lg:border-r-2">
           {workshop.name}
@@ -69,7 +69,7 @@ function WorkshopCard({ workshop }: WorkshopProps) {
             )}
             <button
               onClick={openApplicationModal}
-              className="rounded-lg border border-black px-6 py-3 transition-all hover:bg-green-200"
+              className="bg-user rounded-lg border border-border px-6 py-3 transition-all hover:bg-green-200"
             >
               Apply
             </button>

@@ -7,7 +7,7 @@ function AdminButton({ value, onClick }: AdminButtonProps) {
   return (
     <button
       onClick={onClick}
-      className="bg-admin hover:bg-admin-foreground h-fit rounded-lg border px-6 py-3 transition-all"
+      className="h-fit rounded-lg bg-admin px-6 py-3 text-text transition-all hover:bg-admin-foreground"
     >
       {value}
     </button>

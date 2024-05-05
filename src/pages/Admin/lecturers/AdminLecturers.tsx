@@ -11,7 +11,7 @@ function AdminLecturers() {
       return <Loading />;
     } else
       return (
-        <div className="grid grid-cols-3 border border-slate-400 bg-background">
+        <div className="grid grid-cols-3 border border-border bg-foreground">
           <TableHead value="Title" />
           <TableHead value="Organization" />
           <TableHead value="Options" />

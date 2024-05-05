@@ -37,8 +37,8 @@ function AdminLayout() {
   };
 
   return (
-    <div className="h-screen w-screen bg-orange-50 pt-4 lg:p-8">
-      <nav className="mb-8 flex w-full items-center justify-between rounded-md border bg-background p-2">
+    <div className="bg-background-admin h-screen w-screen pt-4 text-text lg:p-8">
+      <nav className="mb-8 flex w-full items-center justify-between rounded-md border border-border bg-foreground p-2">
         <div className="flex flex-1 md:gap-16 md:pl-6">
           <NavButton
             route="/app/admin/workshops"

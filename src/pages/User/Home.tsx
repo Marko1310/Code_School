@@ -35,13 +35,13 @@ function Home() {
                 <div className="text-center">
                   <Link
                     to={`/app`}
-                    className="bg-background text-text rounded-lg px-8 py-4 font-semibold transition-all hover:bg-green-700 hover:text-white"
+                    className="rounded-lg bg-accent px-8 py-4 font-semibold text-text transition-all hover:bg-green-700 hover:text-white"
                   >
                     Enter
                   </Link>
                 </div>
               </div>
-              <p className="text-text p-2 text-left text-sm">
+              <p className="p-2 text-left text-sm text-text">
                 © 2024 Marko Čabo. All rights reserved.
               </p>
             </div>
