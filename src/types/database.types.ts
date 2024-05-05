@@ -195,7 +195,7 @@ export type Database = {
         Row: {
           attendees: number | null
           created_at: string
-          description: string | null
+          description: string
           difficulty_id: number | null
           id: number
           name: string
@@ -203,7 +203,7 @@ export type Database = {
         Insert: {
           attendees?: number | null
           created_at?: string
-          description?: string | null
+          description: string
           difficulty_id?: number | null
           id?: number
           name: string
@@ -211,7 +211,7 @@ export type Database = {
         Update: {
           attendees?: number | null
           created_at?: string
-          description?: string | null
+          description?: string
           difficulty_id?: number | null
           id?: number
           name?: string
@@ -231,11 +231,22 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      add_new_workshop: {
+      add_workshop: {
         Args: {
-          description: string
-          name: string
-          difficulty_id: number
+          workshop_description: string
+          workshop_name: string
+          workshop_difficulty_id: number
+          theme_ids: string[]
+          lecturer_ids: string[]
+        }
+        Returns: undefined
+      }
+      update_workshop: {
+        Args: {
+          workshop_id: number
+          workshop_description: string
+          workshop_name: string
+          workshop_difficulty_id: number
           theme_ids: string[]
           lecturer_ids: string[]
         }

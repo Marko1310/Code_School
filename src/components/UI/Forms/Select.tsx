@@ -9,7 +9,6 @@ import { Tables } from '../../../types/database.types';
 
 type SelectProps<TFieldValues extends FieldValues> = {
   name: FieldPath<TFieldValues>;
-  defaultValue: string;
   options: Tables<'difficulties' | 'lecturers' | 'themes'>[] | null | undefined;
   register: UseFormRegister<TFieldValues>;
   errors: FieldErrors<TFieldValues>;
@@ -17,14 +16,12 @@ type SelectProps<TFieldValues extends FieldValues> = {
 
 const Select = <TFieldValues extends FieldValues>({
   name,
-  defaultValue,
   options,
   register,
   errors,
 }: SelectProps<TFieldValues>) => (
   <>
     <select
-      defaultValue={defaultValue}
       className="h-14 w-full rounded-md border border-neutral-400 bg-foreground pl-2 text-text focus-within:border-2 hover:border-2 hover:border-neutral-400 focus:border-neutral-600 focus:outline-none"
       {...register(name, { setValueAs: (value) => Number(value) })}
     >

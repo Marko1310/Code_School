@@ -1,7 +1,11 @@
+import { useRef } from 'react';
 import { useAdmin } from '../../context/AdminContext';
 import { WorkshopType } from '../../types/data.types';
 import CardInfo from '../CardInfo';
 import AdminButton from '../UI/AdminButton';
+import useModal from '../../hooks/useModal';
+import Modal from '../Shared/modals/Modal';
+import AddOrUpdateWorkshopModal from '../Shared/modals/AddOrupdateWorkshopModal';
 
 type WorkshopProps = {
   workshop: WorkshopType;
@@ -9,6 +13,8 @@ type WorkshopProps = {
 
 function WorkshopCard({ workshop }: WorkshopProps) {
   const { isAdmin } = useAdmin();
+  const addOrEditNewWorkshopModalRef = useRef<HTMLDialogElement>(null);
+  const { openModal, closeModal } = useModal(addOrEditNewWorkshopModalRef);
 
   return (
     <div className="mb-8 flex h-fit flex-col rounded-lg border bg-white p-6">
@@ -50,13 +56,22 @@ function WorkshopCard({ workshop }: WorkshopProps) {
             })}
           </CardInfo>
           <div className="mt-4 flex justify-end gap-2">
-            {isAdmin && <AdminButton value="Edit workshop" />}
+            {isAdmin && (
+              <AdminButton value="Edit workshop" onClick={openModal} />
+            )}
             <button className="rounded-lg border border-black px-6 py-3 transition-all hover:bg-green-200">
               Apply
             </button>
           </div>
         </div>
       </div>
+      <Modal ref={addOrEditNewWorkshopModalRef}>
+        <AddOrUpdateWorkshopModal
+          closeModal={closeModal}
+          workshop={workshop}
+          type="update"
+        />
+      </Modal>
     </div>
   );
 }

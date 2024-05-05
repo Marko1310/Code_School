@@ -1,10 +1,15 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
-import { useAddNewWorkshop } from '../../../queries/workshopsQueries';
+import {
+  useAddNewWorkshop,
+  useUpdatetWorkshop,
+} from '../../../queries/workshopsQueries';
 import {
   AddNewWorkshopDto,
   AddNewWorkshopSchema,
+  UpdateWorkshopDto,
+  UpdateWorkshopSchema,
 } from '../../../types/forms.type';
 import FormTitle from '../../UI/Forms/FormTitle';
 import InputField from '../../UI/Forms/InputField';
@@ -14,24 +19,50 @@ import { useGetAllLecturers } from '../../../queries/lecturersQueries';
 import { useGetThemes } from '../../../queries/themeQueries';
 import CheckBox from '../../UI/Forms/CheckBox';
 import TextArea from '../../UI/Forms/TextArea';
+import { WorkshopType } from '../../../types/data.types';
 
 type newWorkshopProps = {
+  type: 'add' | 'update';
   closeModal: () => void;
+  workshop?: WorkshopType;
 };
 
-function NewWorkshopModal({ closeModal }: newWorkshopProps) {
+function AddOrUpdateWorkshopModal({
+  type,
+  closeModal,
+  workshop,
+}: newWorkshopProps) {
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<AddNewWorkshopDto>({
-    resolver: zodResolver(AddNewWorkshopSchema),
+    // getValues,
+  } = useForm<UpdateWorkshopDto>({
+    defaultValues: {
+      workshop_id: workshop?.id,
+      workshop_name: workshop?.name,
+      workshop_description: workshop?.description,
+      workshop_difficulty_id: workshop?.difficulties?.id,
+      lecturer_ids: workshop?.lecturers.map((el) => el.id.toString()),
+      theme_ids: workshop?.themes.map((el) => el.id.toString()),
+    },
+    resolver:
+      type === 'add'
+        ? zodResolver(AddNewWorkshopSchema)
+        : zodResolver(UpdateWorkshopSchema),
     mode: 'onChange',
   });
-  const { mutate, isLoading } = useAddNewWorkshop();
+  const { mutate: addWorkshop, isLoading: addWorskhopLoading } =
+    useAddNewWorkshop();
+  const { mutate: updateWorkshop, isLoading: updateWorskhopLoading } =
+    useUpdatetWorkshop();
 
-  const onSubmit = (newWorkshop: AddNewWorkshopDto) => {
-    mutate(newWorkshop);
+  const onSubmit = (workshop: AddNewWorkshopDto | UpdateWorkshopDto) => {
+    const updatedWorkshop = { ...workshop };
+    console.log(updatedWorkshop);
+    type === 'add'
+      ? addWorkshop(workshop as AddNewWorkshopDto)
+      : updateWorkshop(updatedWorkshop as UpdateWorkshopDto);
   };
 
   const { difficulties } = useGetDifficulties();
@@ -39,20 +70,24 @@ function NewWorkshopModal({ closeModal }: newWorkshopProps) {
   const { themes } = useGetThemes();
 
   useEffect(() => {
-    if (!isLoading) {
+    if (!addWorskhopLoading || !updateWorskhopLoading) {
       closeModal();
     }
-  }, [isLoading, closeModal]);
+  }, [addWorskhopLoading, updateWorskhopLoading, closeModal]);
 
+  // const values = getValues();
+  // console.log(values);
   return (
     <form className="flex flex-col gap-4 p-4" onSubmit={handleSubmit(onSubmit)}>
-      <FormTitle title="Add new Workshop" />
+      <FormTitle
+        title={`${type === 'add' ? 'Add new Workshop' : 'Update Workshop'}`}
+      />
       <div className="flex w-96 flex-col gap-4 lg:flex lg:w-[600px] lg:flex-row lg:gap-8">
         <div className="flex w-full flex-col gap-4">
           <div className="flex flex-col gap-1">
             <label>Workshop Name:</label>
             <InputField
-              name="name"
+              name="workshop_name"
               register={register}
               placeholder=""
               errors={errors}
@@ -62,7 +97,7 @@ function NewWorkshopModal({ closeModal }: newWorkshopProps) {
           <div className="flex flex-col gap-1">
             <label>Description:</label>
             <TextArea
-              name="description"
+              name="workshop_description"
               register={register}
               placeholder=""
               errors={errors}
@@ -73,8 +108,7 @@ function NewWorkshopModal({ closeModal }: newWorkshopProps) {
           <div className="flex flex-col gap-1">
             <label>Difficulty:</label>
             <Select
-              name="difficulty_id"
-              defaultValue=""
+              name="workshop_difficulty_id"
               options={difficulties}
               register={register}
               errors={errors}
@@ -118,13 +152,13 @@ function NewWorkshopModal({ closeModal }: newWorkshopProps) {
       </div>
 
       <button
-        disabled={!isValid || isLoading}
+        disabled={!isValid || addWorskhopLoading || updateWorskhopLoading}
         className="mt-6 flex h-14 w-full items-center justify-center rounded-md bg-primary p-3 transition-all hover:bg-primary-foreground disabled:bg-disabled"
         type="submit"
       >
-        {isLoading ? 'Saving' : 'Add Workshop'}
+        {`${type === 'add' ? 'Add Workshop' : 'Update Workshop'}`}
       </button>
     </form>
   );
 }
-export default NewWorkshopModal;
+export default AddOrUpdateWorkshopModal;

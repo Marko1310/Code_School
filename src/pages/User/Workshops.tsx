@@ -14,7 +14,7 @@ import { Filters } from '../../types/data.types';
 import useSidebar from '../../hooks/useSidebar';
 import useModal from '../../hooks/useModal';
 import Modal from '../../components/Shared/modals/Modal';
-import NewWorkshopModal from '../../components/Shared/modals/NewWorkshopModal';
+import AddOrUpdateWorkshopModal from '../../components/Shared/modals/AddOrupdateWorkshopModal';
 
 function Workshops() {
   const [filters, setFilters] = useState<Filters>({
@@ -30,8 +30,8 @@ function Workshops() {
     filters.themes,
   );
   const { themes, difficulties, isLoading: loadingFilteres } = useAllFilters();
-  const addNewWorkshopModalRef = useRef<HTMLDialogElement>(null);
-  const { openModal, closeModal } = useModal(addNewWorkshopModalRef);
+  const addOrEditNewWorkshopModalRef = useRef<HTMLDialogElement>(null);
+  const { openModal, closeModal } = useModal(addOrEditNewWorkshopModalRef);
 
   const handleFilterChange = (id: number, type: keyof Filters) => {
     handleChangeFilter(id, type, setFilters);
@@ -56,8 +56,8 @@ function Workshops() {
           </div>
           <WorkshopsList workshops={filteredWorkshops} isLoading={isLoading} />
         </div>
-        <Modal ref={addNewWorkshopModalRef}>
-          <NewWorkshopModal closeModal={closeModal} />
+        <Modal ref={addOrEditNewWorkshopModalRef}>
+          <AddOrUpdateWorkshopModal closeModal={closeModal} type="add" />
         </Modal>
       </MainContent>
     </div>
