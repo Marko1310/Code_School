@@ -1,7 +1,7 @@
-import { useMutation, useQuery, useQueryClient } from "react-query"
-import { queryKeys } from "../types/query.types"
 import lecturerServices from "../services/lecturerServices"
 import { AddLecturerDto, UpdateLecturerDto } from "../types/forms.type"
+import { queryKeys } from "../types/query.types"
+import { useMutation, useQuery, useQueryClient } from "react-query"
 import toast from "react-hot-toast"
 
 const useGetAllLecturers = () => {

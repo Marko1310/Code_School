@@ -1,6 +1,6 @@
-import { LecturerType } from '../../types/data.types';
 import Loading from '../Shared/UI/Loading';
 import LecturerCard from './LecturerCard';
+import { LecturerType } from '../../types/data.types';
 
 type lecturersListProps = {
   lecturers: LecturerType[] | null | undefined;

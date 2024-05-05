@@ -1,19 +1,21 @@
+import FormTitle from '../UI/Forms/FormTitle';
+import InputField from '../UI/Forms/InputField';
+
+import {
+  useAddOrganization,
+  useUpdatetOrganization,
+} from '../../../queries/organizationQueries';
+
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
-import FormTitle from '../UI/Forms/FormTitle';
-import InputField from '../UI/Forms/InputField';
-import { OrganizationType } from '../../../types/data.types';
 import {
   AddOrganizationDto,
   AddOrganizationchema,
   UpdateOrganizationDto,
   UpdateOrganizationSchema,
 } from '../../../types/forms.type';
-import {
-  useAddOrganization,
-  useUpdatetOrganization,
-} from '../../../queries/organizationQueries';
+import { OrganizationType } from '../../../types/data.types';
 
 type OrganizationProps = {
   type: 'add' | 'update';

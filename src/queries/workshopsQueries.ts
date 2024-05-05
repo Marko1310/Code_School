@@ -1,8 +1,8 @@
-import { useMutation, useQuery, useQueryClient } from "react-query"
-import { queryKeys } from "../types/query.types"
 import workshopServices from "../services/workshopServices"
 import toast from "react-hot-toast"
+import { queryKeys } from "../types/query.types"
 import { AddUserToWorkshopDto, AddWorkshopDto, UpdateWorkshopDto } from "../types/forms.type"
+import { useMutation, useQuery, useQueryClient } from "react-query"
 
 
 const useGetAllWorkshops = () => {

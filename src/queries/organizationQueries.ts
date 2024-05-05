@@ -1,8 +1,8 @@
-import { useMutation, useQuery, useQueryClient } from "react-query"
-import { queryKeys } from "../types/query.types"
 import organizationServices from "../services/organizationServices"
-import { AddOrganizationDto, UpdateOrganizationDto } from "../types/forms.type"
 import toast from "react-hot-toast"
+import { queryKeys } from "../types/query.types"
+import { AddOrganizationDto, UpdateOrganizationDto } from "../types/forms.type"
+import { useMutation, useQuery, useQueryClient } from "react-query"
 
 const useGetOrganizations = () => {
     const {data, isLoading, error} = useQuery ({

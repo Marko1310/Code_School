@@ -1,3 +1,8 @@
+import Loading from '../Loading';
+import SidebarFilters from './SidebarFilters';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import DarkModeToggle from '../../DarkModeToggle';
 import useIsMobile from '../../../../hooks/useIsMobile';
 import {
   DifficultyType,
@@ -5,11 +10,6 @@ import {
   OrganizationType,
   ThemeType,
 } from '../../../../types/data.types';
-import Loading from '../Loading';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
-import SidebarFilters from './SidebarFilters';
-import DarkModeToggle from '../../DarkModeToggle';
 
 type AsideProps = {
   isSidebarExpanded: boolean;

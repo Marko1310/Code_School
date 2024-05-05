@@ -1,6 +1,6 @@
-import { WorkshopType } from '../../types/data.types';
 import Loading from '../Shared/UI/Loading';
 import WorkshopCard from './WorkshopCard';
+import { WorkshopType } from '../../types/data.types';
 
 type workshopsListProps = {
   workshops: WorkshopType[] | null | undefined;

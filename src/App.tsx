@@ -1,10 +1,7 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import ApplicationLayout from './layouts/ApplicationLayout';
 import Home from './pages/User/Home';
 import Workshops from './pages/User/Workshops';
 import Lecturers from './pages/User/Lecturers';
-import { AdminProvider } from './context/AdminContext';
-import { QueryClient, QueryClientProvider } from 'react-query';
 import NotFound from './pages/User/NotFound';
 import ProtectedRoute from './pages/Admin/ProtectedRoute';
 import AdminLayout from './layouts/AdminLayout';
@@ -12,7 +9,10 @@ import AdminWorkshops from './pages/Admin/workshops/AdminWorkshops';
 import AdminLecturers from './pages/Admin/lecturers/AdminLecturers';
 import AdminOrganizations from './pages/Admin/organizations/AdminOrganizations';
 import Notifications from './components/Shared/Notifications';
+import { AdminProvider } from './context/AdminContext';
 import { DarkModeProvider } from './context/DarkModeContext';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 const queryClient = new QueryClient();
 

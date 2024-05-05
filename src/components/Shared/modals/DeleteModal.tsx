@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { UseMutateFunction } from 'react-query';
+import { useEffect } from 'react';
 
 type DeleteModalProps = {
   name: string;

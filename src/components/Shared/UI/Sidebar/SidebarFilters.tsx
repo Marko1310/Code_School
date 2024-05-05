@@ -1,10 +1,10 @@
+import CheckBoxList from '../CheckBoxList';
 import {
   DifficultyType,
   Filters,
   OrganizationType,
   ThemeType,
 } from '../../../../types/data.types';
-import CheckBoxList from '../CheckBoxList';
 
 type SidebarFiltersProps = {
   isSidebarExpanded: boolean;

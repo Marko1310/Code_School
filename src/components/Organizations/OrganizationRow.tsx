@@ -1,12 +1,12 @@
-import { useRef } from 'react';
 import Modal from '../Shared/modals/Modal';
-import TableButton from '../Shared/UI/Table/TableButton';
-import useModal from '../../hooks/useModal';
-import { OrganizationType } from '../../types/data.types';
 import DeleteModal from '../Shared/modals/DeleteModal';
 import AddOrUpdateOrganizationModal from '../Shared/modals/AddOrUpdateOrganizationModal';
-import { useDeleteOrganization } from '../../queries/organizationQueries';
+import TableButton from '../Shared/UI/Table/TableButton';
 import TableColumn from '../Shared/UI/Table/TableColumn';
+import useModal from '../../hooks/useModal';
+import { useDeleteOrganization } from '../../queries/organizationQueries';
+import { useRef } from 'react';
+import { OrganizationType } from '../../types/data.types';
 
 type OrganizationRowProps = {
   organization: OrganizationType;

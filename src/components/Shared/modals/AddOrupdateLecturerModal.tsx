@@ -1,11 +1,19 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect } from 'react';
-
 import FormTitle from '../UI/Forms/FormTitle';
 import InputField from '../UI/Forms/InputField';
 import Select from '../UI/Forms/Select';
 import TextArea from '../UI/Forms/TextArea';
+import CheckBox from '../UI/Forms/CheckBox';
+
+import {
+  useAddLecturer,
+  useUpdatetLecturer,
+} from '../../../queries/lecturersQueries';
+import { useGetOrganizations } from '../../../queries/organizationQueries';
+import { useGetThemes } from '../../../queries/themeQueries';
+
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect } from 'react';
 import { LecturerType } from '../../../types/data.types';
 import {
   AddLecturerDto,
@@ -13,13 +21,6 @@ import {
   UpdateLecturerDto,
   UpdateLecturerSchema,
 } from '../../../types/forms.type';
-import {
-  useAddLecturer,
-  useUpdatetLecturer,
-} from '../../../queries/lecturersQueries';
-import { useGetOrganizations } from '../../../queries/organizationQueries';
-import { useGetThemes } from '../../../queries/themeQueries';
-import CheckBox from '../UI/Forms/CheckBox';
 
 type LecturerProps = {
   type: 'add' | 'update';

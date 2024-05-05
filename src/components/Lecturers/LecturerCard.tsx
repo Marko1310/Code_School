@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom';
-import { useAdmin } from '../../context/AdminContext';
-import { LecturerType } from '../../types/data.types';
 import CardInfo from '../CardInfo';
-import AdminButton from '../Shared/UI/AdminButton';
 import LecturerProfile from './LecturerProfile';
-import Modal from '../Shared/modals/Modal';
+import AdminButton from '../Shared/UI/AdminButton';
 import AddOrupdateLecturerModal from '../Shared/modals/AddOrUpdateLecturerModal';
-import { useRef } from 'react';
+import Modal from '../Shared/modals/Modal';
+import { useAdmin } from '../../context/AdminContext';
 import useModal from '../../hooks/useModal';
+import { useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { LecturerType } from '../../types/data.types';
 
 type LecturerProps = {
   lecturer: LecturerType;
@@ -47,7 +47,7 @@ function LecturerCard({ lecturer }: LecturerProps) {
           className="flex justify-center"
           to={`/app/lecturers/${lecturer.id}`}
         >
-          <button className="bg-user w-full rounded-lg border border-border px-6 py-3 transition-all hover:bg-green-200">
+          <button className="bg-user w-full rounded-lg border border-border px-6 py-3 transition-all hover:bg-green-300">
             View Workshops
           </button>
         </Link>

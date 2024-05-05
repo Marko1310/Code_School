@@ -1,15 +1,15 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect } from 'react';
-
 import FormTitle from '../UI/Forms/FormTitle';
 import InputField from '../UI/Forms/InputField';
 
+import { useAddUserToWorkshop } from '../../../queries/workshopsQueries';
 import {
   AddUserToWorkshopDto,
   AddUserToWorkshopSchema,
 } from '../../../types/forms.type';
-import { useAddUserToWorkshop } from '../../../queries/workshopsQueries';
+
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect } from 'react';
 
 type AddUserToWorkshopProps = {
   closeModal: () => void;

@@ -1,6 +1,13 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect } from 'react';
+import FormTitle from '../UI/Forms/FormTitle';
+import InputField from '../UI/Forms/InputField';
+import Select from '../UI/Forms/Select';
+import CheckBox from '../UI/Forms/CheckBox';
+import TextArea from '../UI/Forms/TextArea';
+
+import { useGetDifficulties } from '../../../queries/difficultyQueries';
+import { useGetAllLecturers } from '../../../queries/lecturersQueries';
+import { useGetThemes } from '../../../queries/themeQueries';
+import { WorkshopType } from '../../../types/data.types';
 import {
   useAddWorkshop,
   useUpdatetWorkshop,
@@ -11,15 +18,10 @@ import {
   UpdateWorkshopDto,
   UpdateWorkshopSchema,
 } from '../../../types/forms.type';
-import FormTitle from '../UI/Forms/FormTitle';
-import InputField from '../UI/Forms/InputField';
-import Select from '../UI/Forms/Select';
-import { useGetDifficulties } from '../../../queries/difficultyQueries';
-import { useGetAllLecturers } from '../../../queries/lecturersQueries';
-import { useGetThemes } from '../../../queries/themeQueries';
-import CheckBox from '../UI/Forms/CheckBox';
-import TextArea from '../UI/Forms/TextArea';
-import { WorkshopType } from '../../../types/data.types';
+
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect } from 'react';
 
 type WorkshopProps = {
   type: 'add' | 'update';

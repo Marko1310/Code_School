@@ -1,12 +1,12 @@
-import { useRef } from 'react';
 import Modal from '../Shared/modals/Modal';
 import AddOrUpdateWorkshopModal from '../Shared/modals/AddOrUpdateWorkshopModal';
 import TableButton from '../Shared/UI/Table/TableButton';
-import useModal from '../../hooks/useModal';
-import { WorkshopType } from '../../types/data.types';
 import { useDeleteWorkshop } from '../../queries/workshopsQueries';
 import DeleteModal from '../Shared/modals/DeleteModal';
 import TableColumn from '../Shared/UI/Table/TableColumn';
+import useModal from '../../hooks/useModal';
+import { useRef } from 'react';
+import { WorkshopType } from '../../types/data.types';
 
 type WorkshopRowProps = {
   workshop: WorkshopType;

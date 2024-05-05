@@ -1,12 +1,12 @@
-import { Outlet, useLocation } from 'react-router-dom';
 import NavButton from '../components/Shared/UI/NavButton';
 import Modal from '../components/Shared/modals/Modal';
-import { useRef } from 'react';
-import useModal from '../hooks/useModal';
 import AddOrUpdateWorkshopModal from '../components/Shared/modals/AddOrUpdateWorkshopModal';
 import AdminButton from '../components/Shared/UI/AdminButton';
 import AddOrUpdateLecturerModal from '../components/Shared/modals/AddOrUpdateLecturerModal';
 import AddOrUpdateOrganizationModal from '../components/Shared/modals/AddOrUpdateOrganizationModal';
+import useModal from '../hooks/useModal';
+import { useRef } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 
 function AdminLayout() {
   const modalRefs = {
