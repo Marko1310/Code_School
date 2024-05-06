@@ -1,6 +1,6 @@
 ## Code School
 
-![Code School Logo](readme/homepage.png)
+![Code School Logo](Readme/homepage.png)
 
 Code School is a full-stack application designed to help students find and apply to lectures and workshops offered by various lecturers. Whether you're looking to enhance your skills in programming, cybersecurity, data science, or any other IT-related field, Code School provides a platform for discovering educational opportunities and connecting with knowledgeable instructors.
 
@@ -44,7 +44,7 @@ Follow these steps to set up the application locally:
 - **Supabase (Backend and Database):**
   Code School leverages Supabase, an open-source alternative to Firebase, for its backend and database needs. Supabase offers real-time database updates and authentication features, all powered by PostgreSQL.
 
-  ![Database](readme/database.png)
+  ![Database](Readme/database.png)
 
 - **Forms with React Hook Form(Database):**
   React Hook Form is used for efficient form management in the frontend. With its lightweight and intuitive API, React Hook Form simplifies form development, enabling rapid development of interactive user interfaces.
