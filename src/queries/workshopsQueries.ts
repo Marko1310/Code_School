@@ -19,7 +19,7 @@ const useGetFilteredWorkshops = (lecturerId?:string, difficultyId?: Array<number
         queryKey: [queryKeys.WORKSHOPS_WITH_DETAILS, lecturerId, difficultyId, themesId],
         queryFn: () => workshopServices.getFilteredWorkshops(lecturerId, difficultyId, themesId)
     })
-    const filteredWorkshops = data?.data
+    const filteredWorkshops = data
     return {filteredWorkshops, isLoading, error}
 }
 

@@ -18,7 +18,7 @@ const useGeFilteredlLecturers = (organizationId?: number[], themesId?:Array<numb
         queryKey: [queryKeys.LECTURERS_WITH_DETAILS, organizationId, themesId],
         queryFn: () => lecturerServices.getFilteredLecturers(organizationId, themesId)
     })
-    const filteredLecturers = data?.data
+    const filteredLecturers = data
     return {filteredLecturers, isLoading, error}
 }
 
